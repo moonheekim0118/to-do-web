@@ -9,7 +9,7 @@
         <a href="/">TO DO</a>
     </div>
     <p id="message">Nice to meet you 👋</p>
-    <form action="/signup" method="POST" class="modal-form">
+    <form action="/signup" method="POST" id="form-container">
         <div class="form-control">
             <label for="email">Email</label>
             <input type="email" name="email" id="email" placeholder="Enter Email">
@@ -31,6 +31,7 @@
             <small>Error Message</small>
         </div>
         <div class="form-control">
+            <input  type="hidden"  name="_csrf"  value="<%= csrfToken%>"  >
             <input type="submit" value="Submit" class="submit">
         </div>
       <div class="moveto">
@@ -38,6 +39,6 @@
       </div>
     </form>                
     </div>
-    <!--자바스크립트 넣기-->
+    <script src="/js/form-validation.js"></script>
 </body>
 <%- include('../includes/footer.ejs') %>

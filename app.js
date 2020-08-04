@@ -59,6 +59,7 @@ app.use('/500', error500handle);
 app.use(error404handle);
 
 app.use((error,req,res,next)=>{
+    console.log(error);
     res.redirect('/500');
 })
 
