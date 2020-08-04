@@ -1,0 +1,14 @@
+<%- include('../includes/head.ejs') %>
+<title><%= pageTitle%></title>
+<link rel="stylesheet" href="/css/index.css">
+</head>
+<body>
+    <%- include('../includes/nav.ejs') %>
+    <%- include('../includes/header.ejs') %>
+<div class="container">
+    <p id="quotes">″You can always change your plan, but only if you have one. I’m a big believer in to-do lists. It helps us break life into small steps. I once put “get tenure” on my to-do list. That was naïve. The most useful to-do list breaks tasks into small steps. It’s like when I encourage Logan to clean his room by picking up one thing at a time.″</p>
+    <!--is auth 인 경우에만 보이도록 수정 !! -->
+    <button class="addTodoBtn" id="addTodoBtn">add new to do</button>
+     <h2></h2>
+ </div>
+<%- include('../includes/footer.ejs') %>

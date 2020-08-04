@@ -1,0 +1,114 @@
+/* modal */
+
+.modal-container{
+    background-color: rgba(0,0,0,0.6);
+    position: fixed;
+    display: none;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    padding:20px;
+}
+
+.modal-container.show-modal{
+    display: block;
+}
+
+
+.modal{
+    font-family: 'Thasadith', sans-serif;
+    background-color: #fff;
+    position: absolute;
+    border-radius: 5px;
+    box-shadow:0 0 10px rgba(0, 0, 0, 0.3); 
+    overflow: hidden;
+    top:50%;
+    left:50%;
+    max-width: 100%;
+    transform: translate(-50%, -50%);
+    width:400px;
+}
+
+
+.modal-header{
+    background-color: var(--primary-color);
+    font-size: 24px;
+    padding: 10px;
+    margin :0;
+}
+
+.close{
+    background-color: transparent;
+    position: absolute;
+    top:5px;
+    right:5px;
+    font-size: 25px;
+    padding:0 10px;
+}
+
+.modal-form input{
+    border: 2px solid #f0f0f0;
+    border-radius: 4px;
+    display: block;
+    padding : 8px;
+    width : 100%;
+}
+
+.modal-content p{
+    text-align: center;
+    font-size: 20px;
+}
+
+.form-control.sucess input{
+    border-color:aqua;
+}
+
+.form-control.error input{
+    border-color: red;
+}
+
+.form-control input:focus{
+    outline:0;
+    border-color: #777;
+}
+.form-control small{
+    color:red;
+    visibility: hidden;
+}
+.form-control.error small{
+    visibility: visible;
+}
+
+.form-control{
+    
+    margin:15px ;
+}
+
+.form-control input:not(:only-of-type('submit')){
+    width: 200px;
+}
+
+.form-control label{
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-control input{
+    display: block;
+}
+
+.movetoSignUp{
+    text-align: center;
+    margin : 20px 0;
+}
+
+.goToSignUp{
+    cursor: pointer;
+    text-decoration: none;
+    color: black;
+}
+
+.goToSignUp:hover{
+    color: var(--primary-color)
+}

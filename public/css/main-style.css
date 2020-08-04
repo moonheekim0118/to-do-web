@@ -1,0 +1,128 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Jura:wght@500&family=Thasadith:wght@700&display=swap&family=Bebas+Neue&display=swap');
+
+:root{
+    --primary-color:#04B4AE;
+    --secondary-color:#FFBF00;
+}
+
+*{
+    box-sizing: border-box;
+}
+
+body{
+    margin: 0;
+    padding:0;
+    transition: transform 0.3s ease;
+}
+
+body.show-nav{
+    transform: translateX(300px);
+}
+button , input[type='submit']{
+    cursor: pointer;
+    background-color: var(--secondary-color);
+    border: none;
+    border-radius: 5px;
+    padding: 8px 20px;
+    font-size:20px;
+}
+nav{
+    background-color: var(--primary-color);
+    width: 300px;
+    min-height: 100vh;
+    height:100%;
+    position: fixed;
+    top:0;
+    left:0;
+    border-right: 1px solid #fff;
+    z-index: 100;
+    font-family: 'Thasadith', sans-serif;
+    transform: translateX(-100%);
+}
+
+
+nav .logo{
+    padding: 20px 0;
+    text-align: center;
+}
+
+nav .logo img{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+}
+
+nav .logo p{
+    color: #fff;
+    font-size:24px;
+}
+
+nav ul{
+    list-style-type: none;
+    margin :0;
+    padding : 0;
+}
+
+nav li{
+    margin: 50px 0;
+    text-align: center;
+}
+
+nav ul li a{
+    color: #fff;
+    font-size:24px;
+    text-decoration: none;
+}
+
+nav ul li a:hover{
+    color: var(--secondary-color);
+    
+}
+
+nav .signin{
+    position: absolute;
+    top: 8px;
+    left:10px;
+}
+
+nav .signin a{
+    color: var(--secondary-color);
+    text-decoration: none;
+    font-size: 24px;
+}
+
+
+/* header */
+
+header{
+    font-family: 'Bebas Neue', cursive;
+    text-align: center;
+    color: #fff;
+    position: relative;
+    margin: 0;
+    padding: 20px 0;
+    height: 250px;
+    background-color: var(--primary-color);
+}
+
+header #titleOfHeader{
+    font-size: 60px;
+    margin:15px;
+}
+
+header #contents{
+    margin:0;
+    padding:0;
+    font-size:30px;
+}
+
+header .toggle{
+    background-color: rgba(0,0,0,0.5);   
+    border: none;
+    position: absolute;
+    font-size: 10px;
+    padding: 7px 10px;
+    top:10px;
+    left:20px;
+}
