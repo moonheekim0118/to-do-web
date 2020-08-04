@@ -12,24 +12,27 @@
     <form action="/signup" method="POST" id="form-container">
         <div class="form-control">
             <label for="email">Email</label>
-            <input type="email" name="email" id="email" placeholder="Enter Email">
+            <input type="email" name="email" id="email" placeholder="Enter Email" value=<%=oldInput.email %>>
             <small>Error Message</small>
         </div>
         <div class="form-control">
             <label for="name">Name</label>
-            <input type="name" name="name" id="name" placeholder="Enter Name">
+            <input type="name" name="name" id="name" placeholder="Enter Name" value=<%=oldInput.name %>>
             <small>Error Message</small>
         </div>
         <div class="form-control">
             <label for="password">Password</label>
-            <input type="password" name="password" id="password" placeholder="Enter Password">
+            <input type="password" name="password" id="password" placeholder="Enter Password" value=<%=oldInput.password %>>
             <small>Error Message</small>
         </div>
         <div class="form-control">
             <label for="password">Conform Password</label>
-            <input type="password" name="Conform-password" id="Conform-password" placeholder="Confirm Password">
+            <input type="password" name="Confirm-password" id="Confirm-password" placeholder="Confirm Password">
             <small>Error Message</small>
         </div>
+        <% if(ErrorMessage.length >0) {%>
+            <div id='errorMessage'><%=ErrorMessage%></div>
+            <% } %>
         <div class="form-control">
             <input  type="hidden"  name="_csrf"  value="<%= csrfToken%>"  >
             <input type="submit" value="Submit" class="submit">

@@ -1,9 +1,10 @@
+
 /* sign up validation*/
 const form_container = document.getElementById('form-container');
 const email= document.getElementById('email');
 const name = document.getElementById('name');
 const password= document.getElementById('password');
-const confirmPassowrd=document.getElementById('Conform-password');
+const confirmPassowrd=document.getElementById('Confirm-password');
 const form_controls =document.querySelectorAll('.form-control');
 
 function addError(input, message){
@@ -51,9 +52,18 @@ function matchingCheck(password1, password2){
     }
 }
 
+function checkEmail(input){
+    const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if(re.test(input.value.trim())){
+        addPass(input);
+    }else{
+        addError(input, 'Email is not valid');
+    }
+}
 
 email.addEventListener('keypress', ()=>{
     requiredCheck(email);
+    checkEmail(email);
 })
 
 name.addEventListener('keypress', ()=>{

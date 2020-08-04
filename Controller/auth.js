@@ -1,24 +1,46 @@
 import bcrypt from 'bcrypt';
 import User from '../Model/User.js';
-
+import validator from 'express-validator';
+const { validationResult }= validator;
 export const getLogin=(req,res,next)=>{ 
      // 이미 로그인 되었다면 ? 
      if(req.session.isLoggedIn){
         return res.redirect('/');
      }
      res.render('auth/login', {
-         pageTitle:'login'
+         pageTitle:'login',
+         ErrorMessage:'',
+         oldInput:{email:'', password:''}
      });
 }
 
+
+// validation error 시 render 인자로 넘겨주는 것
+// 1. Error Message
+// 2. old input ( input 에 old input을 value로 띄운다.)
 export const postLogin=async (req,res,next)=>{
     const email = req.body.email;
     const password= req.body.password;
+    const error = validationResult(req);
+    const oldInput={email:email, password:password};
+    if(!error.isEmpty()){
+        return res.status(422).render('auth/login',
+        {
+            pageTitle:'login',
+            ErrorMessage: error.array()[0].msg,
+            oldInput:oldInput
+        })
+    }
     try{
         // email과 password가 일치하는지 확인
         const user = await User.findOne({email:email});
         if(!user){ // error 
-            res.redirect('/');
+            return res.status(422).render('auth/login',
+            {
+                pageTitle:'login',
+                ErrorMessage: 'Email dose not exist!',
+                oldInput:oldInput
+            })
         }
         else{
             const doMatch = await bcrypt.compare(password,user.password);
@@ -29,7 +51,12 @@ export const postLogin=async (req,res,next)=>{
                 res.redirect('/');
             }
             else{ // 일치하지 않는 경우 
-                res.redirect('/');
+                return res.status(422).render('auth/login',
+                {
+                    pageTitle:'login',
+                    ErrorMessage: 'Wrong Password!',
+                    oldInput:oldInput
+                })
             }
         }
     }catch(err) {
@@ -50,7 +77,9 @@ export const getSignUp=(req,res,next)=>{
         return res.redirect('/');
     }
     res.render('auth/signup', {
-        pageTitle:'sign up'
+        pageTitle:'sign up',
+        ErrorMessage:'',
+        oldInput:{email:'', name:'', password:''}
     })
 }
 
@@ -58,7 +87,16 @@ export const postSignUp= async (req,res,next)=>{
     const email= req.body.email;
     const name = req.body.name;
     const password= req.body.password;
-    /*이미 존재하는 이메일인 경우 --> error message 출력 --> routing에서 해주기*/
+    const oldInput={email:email, name:name, password:password} 
+    const error = validationResult(req);
+    if(!error.isEmpty()){
+        return res.status(422).render('auth/signup',
+        {
+            pageTitle:'sign up',
+            ErrorMessage: error.array()[0].msg,
+            oldInput:oldInput
+        })
+    }
     try{
         const hashedPassword = await bcrypt.hash(password,12);
         const newUser = new User({email:email, name:name, password:hashedPassword});

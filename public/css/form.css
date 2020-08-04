@@ -109,3 +109,8 @@ small {
 input:focus{
     border: 1px solid var(--secondary-color);
 }
+
+#errorMessage{
+    color:red;
+    text-align: center;
+}

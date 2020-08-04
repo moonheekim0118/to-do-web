@@ -12,14 +12,17 @@
     <form action="/login" method="POST" id="form-container">
         <div class="form-control">
             <label for="email">Email</label>
-            <input type="email" name="email" id="email" placeholder="Enter Email">
+            <input type="email" name="email" id="email" placeholder="Enter Email" value=<%=oldInput.email %>>
             <small>Error Message</small>
         </div>
         <div class="form-control">
             <label for="password">Password</label>
-            <input type="password" name="password" id="password" placeholder="Enter Password">
+            <input type="password" name="password" id="password" placeholder="Enter Password" value=<%=oldInput.password %>>
             <small>Error Message</small>
         </div>
+        <% if(ErrorMessage.length >0) {%>
+            <div id='errorMessage'><%=ErrorMessage%></div>
+            <% } %>
         <div class="form-control">
             <input  type="hidden"  name="_csrf"  value="<%= csrfToken%>"  >
             <input type="submit" value="Submit" class="submit">
