@@ -43,14 +43,6 @@ function lengthCheck(inputObj){
     }
 }
 
-function matchingCheck(password1, password2){
-    if(password1.value !== password2.value){
-        addError(password2, 'Passwords do not match');
-    }
-    else{
-        addPass(password2);
-    }
-}
 
 function checkEmail(input){
     const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -61,24 +53,19 @@ function checkEmail(input){
     }
 }
 
-email.addEventListener('keypress', ()=>{
+email.addEventListener('input', ()=>{
     requiredCheck(email);
     checkEmail(email);
 })
 
-name.addEventListener('keypress', ()=>{
+name.addEventListener('input', ()=>{
     requiredCheck(name);
     lengthCheck({input:name, min:2, max:10});
 })
 
-password.addEventListener('keypress', ()=>{
+password.addEventListener('input', ()=>{
     requiredCheck(password);
     lengthCheck({input:password, min:6, max:12});
-})
-
-confirmPassowrd.addEventListener('keypress', ()=>{
-    requiredCheck(confirmPassowrd);
-    matchingCheck(password,confirmPassowrd);
 })
 
 

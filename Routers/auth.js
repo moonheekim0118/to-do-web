@@ -27,7 +27,7 @@ router.get('/signUp', getSignUp);
 router.post('/signUp',[
     body('email').trim().isEmail().withMessage('Please type correct Email')
     .custom(value=>{
-        return User.find({email:value})
+        return User.findOne({email:value})
         .then(user=>{
             if(user){
                 return Promise.reject('E-mail already in use');
@@ -37,7 +37,7 @@ router.post('/signUp',[
     body('name').trim().isLength({min:3, max:10}).withMessage('name must be at least 3, less then 10'),
     body('password').trim().isLength({min:6, max:12}).withMessage('Password must be at least 6, less then 12'),
     body('Confirm-password').trim()
-    .custom(value=>{
+    .custom((value, {req})=>{
         if(value !== req.body.password){
             throw new Error('passwords do not match ');
          }

@@ -83,12 +83,13 @@ export const getSignUp=(req,res,next)=>{
     })
 }
 
-export const postSignUp= async (req,res,next)=>{
+export const  postSignUp =async (req,res,next)=>{
     const email= req.body.email;
     const name = req.body.name;
     const password= req.body.password;
     const oldInput={email:email, name:name, password:password} 
     const error = validationResult(req);
+    console.log(error);
     if(!error.isEmpty()){
         return res.status(422).render('auth/signup',
         {
