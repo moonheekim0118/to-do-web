@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+
+:root{
+    --primary-color:#04B4AE;
+    --secondary-color:#FFBF00;
+}
+
+*{
+    box-sizing: border-box;
+}
+
+body{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.form-container{
+    background-color: #f4f4f4;
+    border-radius: 5px;
+    width: 400px;
+    box-shadow:0 0 10px rgba(0, 0, 0, 0.3); 
+}
+
+.form-container #goToIndex{
+    margin: 20px;
+}
+
+#goToIndex a{
+    text-decoration: none;
+    color: var(--secondary-color);
+    font-size: 30px;
+    font-family: 'Fredoka One', cursive;
+    
+}
+
+.form-container #message{
+    margin : 20px;
+    text-align: center;
+}
+
+.form-control{
+    margin: 20px 20px;
+}
+
+label {
+    display: block;
+}
+
+small {
+    display: block;
+}
+
+.form-control input:focus{
+    outline: 0;
+    border-color: var(--secondary-color);
+}
+
+.form-control.sucess input{
+    border-color:aqua;
+}
+
+.form-control.error input{
+    border-color: red;
+}
+
+.form-control small{
+    color:red;
+    visibility: hidden;
+}
+.form-control.error small{
+    visibility: visible;
+}
+
+.form-control input{
+    display: block;
+    height: 30px;
+    width: 100%;
+    border-radius: 5px;
+    border : 1px solid #D8D8D8;
+    margin : 10px 0;
+}
+
+.moveto{
+    text-align: center;
+    margin : 20px 0;
+}
+
+.goTo{
+    cursor: pointer;
+    text-decoration: none;
+    color: black;
+}
+
+.goTo:hover{
+    color: var(--primary-color)
+}
+
+.submit{
+    cursor: pointer;
+    background-color: var(--primary-color);
+    font-size: 20px;
+}
+
+input:focus{
+    border: 1px solid var(--secondary-color);
+}

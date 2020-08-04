@@ -1,9 +1,15 @@
-<div class="modal-header">
-    LogIn
-</div>
-<div class="modal-content">
-    <p>Let's make your day 👌🏻</p>
-    <form action="" class="modal-form">
+
+<%- include('../includes/head.ejs') %>
+<title><%= pageTitle%></title>
+<link rel="stylesheet" href="/css/form.css">
+</head>
+<body>
+    <class class="form-container">
+    <div id="goToIndex">
+        <a href="/">TO DO</a>
+    </div>
+    <p id="message">Let's make your day 👌🏻</p>
+    <form action="/login" method="POST" class="modal-form">
         <div class="form-control">
             <label for="email">Email</label>
             <input type="email" name="email" id="email" placeholder="Enter Email">
@@ -17,8 +23,11 @@
         <div class="form-control">
             <input type="submit" value="Submit" class="submit">
         </div>
-      <div class="movetoSignUp">
-          <p id="goToSignUp" class="goToSignUp">or ... don't have an account yet👀 ?</p>
+      <div class="moveto">
+          <a href="/signup" id="goTo" class="goTo">or ... don't have an account yet👀 ?</a>
       </div>
     </form>                
-</div>
+    </div>
+    <!--자바스크립트 넣기-->
+</body>
+<%- include('../includes/footer.ejs') %>
