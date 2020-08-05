@@ -51,21 +51,7 @@ async function addTodo(dom){
     }
 }
 
-// localstroage에서 check 된 id 목록을 가져와서, 해당 id의 dom에 done class를 추가해주어 checked 되었다는 UI를 구현해준다. 
-function initalCheck(){ 
-    const list = JSON.parse(localStorage.getItem('todoList')); // local stroage 에서 가져오기 
-    list.forEach(get=>{ // done class 추가
-        const post=document.querySelector(`input[value="${get.id}"]`);
-        const li = post.parentNode;
-        const checkbox = li.querySelector('#doneToggle');
-        checkbox.checked=true;
-        li.classList.add('done');
-        
-    })
-}
-
-let todoList=[];
-
+// check status 저장 -> html에서 해결해줌 
 // checkbox onclick 함수
 async function DoneCheck(dom){
     const li = dom.parentNode;
@@ -74,23 +60,9 @@ async function DoneCheck(dom){
     const csrf=document.querySelector('[name=_csrf]').value;
     if(checked===true){ // 체크 되었다면 
         li.classList.add('done'); // done 클래스 추가 
-        let ListStoraged = JSON.parse(localStorage.getItem('todoList')); // liststroage에서 기존 todoList 가져와서 업데이트 
-        if(ListStoraged!==null){
-            todoList = ListStoraged;
-        }
-        todoList.push({id:id});
-        localStorage.setItem('todoList',JSON.stringify(todoList));    // 업데이트한 목록을 다시 저장  
     }
     else{ // uncheck 되었다면 
         li.classList.remove('done'); //done class 삭제 
-        let ListStoraged =JSON.parse(localStorage.getItem('todoList')); // listStorage에서 기존 todoList 가져와서 업데이트 
-        if(ListStoraged!==null){
-            todoList = ListStoraged.filter(get=>
-                {
-                    return get.id!==id;
-                });
-            localStorage.setItem('todoList', JSON.stringify(todoList)); // 업데이트한 목록을 다시 저장 
-        }
     }
     method='PUT';
     sendingData ={done:checked, id:id };
@@ -106,5 +78,3 @@ async function DoneCheck(dom){
     const data = await result.json();
     console.log(data);
 }
-
-initalCheck()
