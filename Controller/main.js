@@ -32,10 +32,42 @@ export const addToDo=async (req,res,next)=>{
         if(!post){
             return  res.status(501).json({message:'failed'});
         }
-        else{ return  res.status(200).json({message:'succeed'});}
+        else{ return  res.status(200).json({message:'succeed', post:post});}
    }catch(err){
         const error = new Error(err);
         error.httpStatusCode= 500;
         return next(error);
    }
+}
+
+export const doneCheck=async(req,res,next)=>{
+    const done = req.body.done;
+    const postId= req.body.id;
+    try{
+        const post = await Post.findById(postId);
+        if(!post){
+            return  res.status(501).json({message:'failed'});
+        }
+        post.isDone = done;
+        await post.save();
+        return res.status(200).json({message:'succeed'});
+    }catch(err){
+        const error = new Error(err);
+        error.httpStatusCode= 500;
+        return next(error);
+   }
+}
+
+
+export const isDoneCheck =async(req,res,next)=>{
+    const postId = req.parmas.postId;
+    try{
+        const post = await Post.findById(postId);
+        if(!post){
+            return  res.status(501).json({message:'failed'});
+        }
+        return res.status(200).json({message:'succeed', done:post.isDone});
+    }catch(err){
+        
+    }
 }

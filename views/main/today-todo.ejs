@@ -26,7 +26,8 @@
     <% if(todoList.length >0){ %>
         <% todoList.forEach(todo=>{ %>
             <li class="todo">
-                <input type="checkbox" name="" id="">
+                <input type="checkbox" id="doneToggle" onClick="DoneCheck(this)">
+                <input type="hidden" name="postId" id="postId" value="<%=todo._id%>"">
                 <%= todo.contents %>
                 <div class="dropdown">
                     <button class="dropbtn">
@@ -39,9 +40,9 @@
                 </div>
             </li>
         <% }) %>
-    <%}%>
     </ul>
     <button id="clear">Clear ALL</button>
+    <%}%>
 </div>
  <script src="js/nav.js"></script>
  <script src="js/todayTodo.js"></script>

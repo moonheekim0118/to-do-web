@@ -11,15 +11,6 @@
     text-align: center;
 }
 
-/* .todo-container button{
-    cursor: pointer;
-    background-color: var(--secondary-color);
-    border: none;
-    border-radius: 5px;
-    padding: 8px 20px;
-    font-size:20px;
-} */
-
 .add-todo .newTask{
     background-color: transparent;
     border:none;
@@ -46,6 +37,9 @@
     padding:8px
 }
 
+.todo.done{
+    text-decoration: line-through;
+}
 
 .radio-box{
     margin-top: 20px;
