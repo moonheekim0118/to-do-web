@@ -22,7 +22,7 @@
                 <label for="not">Not that Important!</label>
             </div>
         </form>
-        <ul class="todo-list">
+        <ul class="todo-list <%=todoList.length === 0? 'hidden' : ''%>">
     <% if(todoList.length >0){ %>
         <% todoList.forEach(todo=>{ %>
             <li class="<%= todo.isDone ? 'todo done' : 'todo' %>">
@@ -40,10 +40,10 @@
                 </div>
             </li>
         <% }) %>
-    </ul>
-    <button id="clear">Clear ALL</button>
     <%}%>
+</ul>
+<button id="clear" class="<%= todoList.length===0 ? 'removed' : '' %>" onClick="clearAll(this)">Clear ALL</button>
 </div>
  <script src="js/nav.js"></script>
  <script src="js/todayTodo.js"></script>
-<%- include('../includes/footer.ejs') %>
+<%- include('../includes/footer.ejs') %> 

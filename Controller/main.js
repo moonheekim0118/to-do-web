@@ -68,6 +68,21 @@ export const isDoneCheck =async(req,res,next)=>{
         }
         return res.status(200).json({message:'succeed', done:post.isDone});
     }catch(err){
-        
+        const error = new Error(err);
+        error.httpStatusCode= 500;
+        return next(error);
+    }
+}
+
+export const deleteAll=async(req,res,next)=>{
+    // 현재 req user에 해당하는 모든 아이템 지우기.
+    try{
+    await Post.remove({'userId':req.user._id});
+    return res.status(200).json({message:'succeed'});
+    }catch(err)
+    {
+        const error = new Error(err);
+        error.httpStatusCode= 500;
+        return next(error);
     }
 }

@@ -29,6 +29,13 @@ async function addTodo(dom){
             const post = data.post;
             const ul = container.querySelector('.todo-list'); 
             const li = document.createElement('li'); 
+            const clearBtn= document.querySelector('#clear');
+            if(ul.classList.contains('hidden')){ // 첫번째 todo로 등록될 경우 
+                ul.classList.remove('hidden'); // 숨겨졌던 ul visible하게 바꾸기 
+            }
+            if(clearBtn.classList.contains('removed')){ // 첫번째 todo 로 등록될 경우
+                clearBtn.classList.remove('removed'); //숨겨졌던 clear all visible하게 바꾸기 
+            } 
             li.classList.add('todo');
             li.innerHTML=
             `<input type="checkbox" id="doneToggle" onClick="DoneCheck(this)">
@@ -42,7 +49,8 @@ async function addTodo(dom){
                     <a href="#">delete</a>
                     <a href="#">edit</a>
                   </div>
-            </div>`
+            </div>
+            `
             ul.appendChild(li);
             document.querySelector('input[name="task"]').value='';
         }
@@ -77,4 +85,26 @@ async function DoneCheck(dom){
     })
     const data = await result.json();
     console.log(data);
+}
+
+
+async function clearAll(dom){
+    const $ul = document.querySelector('.todo-list');
+    const method = "DELETE"
+    const csrf=document.querySelector('[name=_csrf]').value;
+   try{
+    const result = await fetch('/delete-all', 
+    {
+        method:method,
+        headers:{
+            'Accept': 'application/json',
+            'csrf-token':csrf
+        }
+    });
+    const  data = await result.json();
+    console.log(data);
+    $ul.innerHTML='';
+    $ul.classList.add('hidden'); // ul 안보이게 바꾸기 
+    dom.classList.add('removed'); // clear all button 안보이게 바꾸기 
+    }catch(err){console.log(err)}
 }

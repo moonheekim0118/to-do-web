@@ -93,3 +93,11 @@
 .dropdown:hover .dropdown-content{
     display: block;
 }
+
+#clear.removed{
+    visibility: hidden;
+}
+
+.todo-list.hidden{
+    visibility: hidden;
+}
