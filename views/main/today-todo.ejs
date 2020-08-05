@@ -1,0 +1,48 @@
+<%- include('../includes/head.ejs') %>
+<title><%= pageTitle%></title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+<link rel="stylesheet" href="/css/main-style.css">
+<link rel="stylesheet" href="/css/index.css">
+<link rel="stylesheet" href="/css/todolist.css">
+</head>
+<body>
+    <%- include('../includes/nav.ejs') %>
+    <%- include('../includes/header.ejs') %>
+    <div class="todo-container">
+        <form class="add-todo">
+            <input type="text" name="task" class="newTask" placeholder="Add new To do">
+            <input type="hidden"  name="_csrf"  value="<%= csrfToken%>"  >
+            <input type="button" onClick="addTodo(this)" value="add">
+            <div class="radio-box">
+                <input type="radio" name="importance" id="strong"> 
+                <label for="strong">Very Important!</label>
+                <input type="radio" name="importance" id="mid">
+                <label for="mid">Kindof..Important!</label>
+                <input type="radio" name="importance" id="not">
+                <label for="not">Not that Important!</label>
+            </div>
+        </form>
+        <ul class="todo-list">
+    <% if(todoList.length >0){ %>
+        <% todoList.forEach(todo=>{ %>
+            <li class="todo">
+                <input type="checkbox" name="" id="">
+                <%= todo.contents %>
+                <div class="dropdown">
+                    <button class="dropbtn">
+                        <i class="fas fa-ellipsis-v"></i>
+                      </button>
+                      <div class="dropdown-content">
+                        <a href="#">delete</a>
+                        <a href="#">edit</a>
+                      </div>
+                </div>
+            </li>
+        <% }) %>
+        </ul>
+         <button id="clear">Clear ALL</button>
+    <%}%>
+</div>
+ <script src="js/nav.js"></script>
+ <script src="js/todayTodo.js"></script>
+<%- include('../includes/footer.ejs') %>

@@ -25,6 +25,7 @@ const __dirname = dirname(__filename);
 app.set('view engine', 'ejs'); // template engine set 
 app.set('views', 'views');
 app.use(bodyParser.urlencoded({extended:false})); // body parser set 
+app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname,'public'))); // static file set 
 app.use(session({secret:'my secret', resave:false, saveUninitialized:false, store:store})) // connectiong to db - session  
 app.use(csrfProtection); // csrf protection middleware

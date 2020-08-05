@@ -15,6 +15,27 @@ export const getTodayToDo=async(req,res,next)=>{
     })
 }
 
-export const addToDo=(req,res,next)=>{
-    
+export const addToDo=async (req,res,next)=>{
+    const contents = req.body.contents;
+    const importanceRate = req.body.importance;
+    let importance;
+    if(importanceRate == 'strong'){
+        importance=3;
+    } else if(importanceRate =='mid'){
+        importance=2;
+    }else {
+        importance=1;
+    }
+    try{
+        const post = await new Post({userId:req.user._id, contents:contents , isDone: false, importance:importance});
+        await post.save();
+        if(!post){
+            return  res.status(501).json({message:'failed'});
+        }
+        else{ return  res.status(200).json({message:'succeed'});}
+   }catch(err){
+        const error = new Error(err);
+        error.httpStatusCode= 500;
+        return next(error);
+   }
 }
