@@ -19,7 +19,9 @@ body{
 body.show-nav{
     transform: translateX(300px);
 }
-button , input[type='submit']{
+button , .button, input[type='submit'], input[type='button']{
+    text-decoration: none;
+    color: black;
     cursor: pointer;
     background-color: var(--secondary-color);
     border: none;

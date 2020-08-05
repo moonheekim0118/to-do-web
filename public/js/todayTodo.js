@@ -49,6 +49,3 @@ async function addTodo(dom){
         console.log(err);
     }
 }
-
-// json으로 전송해준 후 db에 저장 후 error 안나면
-// parent dom 따라 올라가서 ul 돔까지 내려간후.. 새로운 li로 추가..
