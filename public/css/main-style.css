@@ -109,6 +109,8 @@ header{
 header #titleOfHeader{
     font-size: 60px;
     margin:15px;
+    text-decoration: none;
+    color: #fff;
 }
 
 header #contents{

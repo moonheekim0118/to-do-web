@@ -1,7 +1,7 @@
 
 const loginCheck=(req,res,next)=>{
     if(!req.session.isLoggedIn){
-        return res.redirect('/');
+        return res.redirect('/login');
     }
     next();
 }
