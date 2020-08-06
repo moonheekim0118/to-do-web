@@ -29,7 +29,7 @@
             <li class="<%= todo.isDone ? 'todo done' : 'todo' %>">
                 <input type="checkbox" id="doneToggle" onClick="DoneCheck(this)" <%= todo.isDone ? 'checked': '' %>>
                 <input type="hidden" name="postId" id="postId" value="<%=todo._id%>"">
-                <%= todo.contents %>
+                <span id="contents"><%= todo.contents %></span>
                 <div class="dropdown">
                     <button class="dropbtn">
                         <i class="fas fa-ellipsis-v"></i>
