@@ -117,8 +117,11 @@ export const updatePost = async(req,res,next)=>
     else if(importance==='mid'){
         importance=2;
     }
-    else{
+    else if(importance==='not'){
         importance=1;
+    }
+    else{
+        importance=0;
     }
     try{
         const post = await Post.findById(postId);
@@ -126,7 +129,9 @@ export const updatePost = async(req,res,next)=>
             throw new Error('there is no post');
         }
         post.contents=contents;
-        post.importance=importance;
+        if(importance!==0){ // 변경되지 않았다면 update해주지 않는다.
+            post.importance=importance;
+        }
         await post.save();
         return res.status(200).json({message:'succeed'});
     }catch(err)

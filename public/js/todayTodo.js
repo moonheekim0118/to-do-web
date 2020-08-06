@@ -1,7 +1,6 @@
 const ul = document.querySelector('.todo-list');
 const clearBtn= document.querySelector('#clear');
 const modal_container =document.querySelector('.modal-container'); 
-const modal_contents = modal_container.querySelector('.modal-content');
 const close = document.querySelector('.close');
 const csrf=document.querySelector('[name=_csrf]').value;
 // ---------------- Helper 함수 --------------------------------------
@@ -11,6 +10,7 @@ function closeModal(){ // modal 닫는 함수
 
 // ul 삭제해주는 함수 
 function removeUl(){
+    ul.innerHTML='';
     ul.classList.add('hidden'); // ul 안보이게 바꾸기 
     clearBtn.classList.add('removed'); // clear all button 안보이게 바꾸기 
 }
@@ -167,6 +167,7 @@ function popUpModal(dom)
     const li =dropdown.parentNode.parentNode;
     const id = li.querySelector('#postId').value;
     const originContents = li.querySelector('#contents').innerText;
+    const modal_contents = modal_container.querySelector('.modal-content');
     const ContentsInput= modal_contents.querySelector('#contents');
     ContentsInput.value=originContents; // 원래 contents 내용을 input value로 담아놓기
     localStorage.setItem('updateId', id); // 변경하는 항목의 id를 저장해놓기 
@@ -177,6 +178,7 @@ function popUpModal(dom)
 // modal 내에서 edit submit을 누르면 실행되는 함수 
 async function updatePost(dom){
     const id = localStorage.getItem('updateId'); // localstroage 에 저장해놓은 id 가져오기 
+    const modal_contents = modal_container.querySelector('.modal-content');
     const contents = modal_contents.querySelector('#contents').value;
     const importance =modal_contents.querySelector('input[name="importance"]:checked').id;
     const method="PUT";
