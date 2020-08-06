@@ -46,8 +46,8 @@ async function addTodo(dom){
                     <i class="fas fa-ellipsis-v"></i>
                   </button>
                   <div class="dropdown-content">
-                  <button onclick="removeOne(this)">delete</button>
-                    <a href="#">edit</a>
+                  <a href="#" onclick="removeOne(this);return false;">delete</a>
+                  <a href="#" onclick="popUpModal(this);return false;" >edit</a>
                   </div>
             </div>
             `
@@ -136,4 +136,86 @@ async function removeOne(dom){
         console.log(err);
     }
     
+}
+const modal_container =document.querySelector('.modal-container');
+// edit을 누르면 modal을 띄운다.
+function popUpModal(dom)
+{
+    const dropdown = dom.parentNode;
+    const li =dropdown.parentNode.parentNode;
+    const id = li.querySelector('#postId').value;
+    localStorage.setItem('updateId', id);
+    modal_container.classList.add('show-modal');
+}
+
+// close button을 누르면 modal 닫기
+const close = document.querySelector('.close');
+
+close.addEventListener('click',()=>{
+    modal_container.classList.remove('show-modal');
+})
+
+// modal 외부를 눌렀을 때도 modal 닫기
+window.addEventListener('click',(e)=>{
+    e.target == modal_container? modal_container.classList.remove('show-modal') : false;
+})
+
+// modal 내에서 submit을 누르면 실행되는 함수 
+async function updatePost(dom){
+    const id = localStorage.getItem('updateId');
+    const modal_content=document.querySelector('.modal-content');
+    const contents = modal_content.querySelector('#contents').value;
+    const importance =modal_content.querySelector('input[name="importance"]:checked').id;
+    const csrf=document.querySelector('[name=_csrf]').value;
+    const method="PUT";
+    const sendingData={id:id, contents: contents, importance:importance};
+    if(contents.length <=0){ // contents 입력 안하고 submit 할 시
+        return alert('please type contents of your todo!');
+    }
+    if(importance===null){ // importance check 안할시 not 으로 자동 설정 
+        importance='not';
+    }
+    try{
+        const result = await fetch('/update-post',
+        {
+            method:method,
+            headers:{
+                'Accept': 'application/json',
+                'csrf-token':csrf,
+                'Content-Type':'application/json;charset=utf-8'
+            },
+            body:JSON.stringify(sendingData)
+        })
+        const data = await result.json();
+        updatedUI(contents,id);
+        modal_container.classList.remove('show-modal'); // modal 닫기
+        modal_content.querySelector('#contents').value=''; // input value 비워두기
+    }catch(err){
+        console.log(err);
+    }
+}
+
+// 변경된 contents를 적용해주는 함수 
+const todo_container=document.querySelector('.todo-container');
+function updatedUI(contents, id)
+{
+    const AllToDos=todo_container.querySelectorAll('li'); // to-do container에서 li들을 모두 가져옴 
+    AllToDos.forEach(li=>{
+        if(id === li.querySelector('#postId').value){  // li 태그 중에서 변경된 항목의 id와일치하는 곳의 html을 변경해준다.
+            li.innerHTML= `<input type="checkbox" id="doneToggle" onClick="DoneCheck(this)">
+            <input type="hidden" name="postId" id="postId" value="${id}"">
+            ${contents}
+            <div class="dropdown">
+                <button class="dropbtn">
+                    <i class="fas fa-ellipsis-v"></i>
+                  </button>
+                  <div class="dropdown-content">
+                  <a href="#" onclick="removeOne(this);return false;">delete</a>
+                  <a href="#" onclick="popUpModal(this);return false;" >edit</a>
+                  </div>
+            </div>
+            `
+            return;
+        }
+    })
 }

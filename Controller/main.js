@@ -105,3 +105,34 @@ export const deleteOne=async(req,res,next)=>{
         return next(error);
     }
 }
+
+export const updatePost = async(req,res,next)=>
+{
+    const postId=req.body.id;
+    const contents = req.body.contents;
+    let importance= req.body.importance;
+    if(importance==='strong'){
+        importance=3;
+    }
+    else if(importance==='mid'){
+        importance=2;
+    }
+    else{
+        importance=1;
+    }
+    try{
+        const post = await Post.findById(postId);
+        if(!post){
+            throw new Error('there is no post');
+        }
+        post.contents=contents;
+        post.importance=importance;
+        await post.save();
+        return res.status(200).json({message:'succeed'});
+    }catch(err)
+    {
+        const error = new Error(err);
+        error.httpStatusCode= 500;
+        return next(error);
+    }
+}

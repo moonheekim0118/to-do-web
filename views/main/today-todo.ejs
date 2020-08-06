@@ -4,6 +4,7 @@
 <link rel="stylesheet" href="/css/main-style.css">
 <link rel="stylesheet" href="/css/index.css">
 <link rel="stylesheet" href="/css/todolist.css">
+<link rel="stylesheet" href="/css/edit-modal.css">
 </head>
 <body>
     <%- include('../includes/nav.ejs') %>
@@ -35,7 +36,7 @@
                       </button>
                       <div class="dropdown-content">
                         <a href="#" onclick="removeOne(this);return false;">delete</a>
-                        <a href="#" >edit</a>
+                        <a href="#" onclick="popUpModal(this);return false;" >edit</a>
                       </div>
                 </div>
             </li>
@@ -43,6 +44,37 @@
     <%}%>
 </ul>
 <button id="clear" class="<%= todoList.length===0 ? 'removed' : '' %>" onClick="clearAll(this)">Clear ALL</button>
+</div>
+<!--modal-->
+<div class="modal-container" id="modal-container">
+    <div class="modal">
+        <button class="close" id="close">
+            <i class="fa fa-times"></i>
+        </button>
+        <div class="modal-header">
+            update your to do 
+        </div>
+        <div class="modal-content">
+            <form action="" class="modal-form">
+                <div class="form-control">
+                    <input type="text" id="contents">
+                </div>
+                <div class="form-control">
+                    <div class="radio-box">
+                        <input type="radio" name="importance" id="strong"> 
+                        <label for="strong">Very Important!</label>
+                        <input type="radio" name="importance" id="mid">
+                        <label for="mid">Kindof..Important!</label>
+                        <input type="radio" name="importance" id="not">
+                        <label for="not">Not that Important!</label>
+                    </div>
+                </div>
+                <div class="form-control">
+                    <input type="button" onclick="updatePost(this)" value="Update" class="update">
+                </div>
+            </form>                
+        </div>
+    </div>
 </div>
  <script src="js/nav.js"></script>
  <script src="js/todayTodo.js"></script>

@@ -1,0 +1,65 @@
+
+.modal-container{ /* modal 외부 */
+    background-color: rgba(0,0,0,0.6);
+    position: fixed;
+    display: none;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    padding:20px;
+}
+
+.modal-container.show-modal{
+    display: block;
+}
+
+
+.modal{
+    font-family: 'Thasadith', sans-serif;
+    background-color: #fff;
+    position: absolute;
+    border-radius: 5px;
+    box-shadow:0 0 10px rgba(0, 0, 0, 0.3); 
+    overflow: hidden;
+    top:50%;
+    left:50%;
+    max-width: 100%;
+    transform: translate(-50%, -50%);
+    width:500px;
+}
+
+
+.modal-header{
+    background-color: var(--primary-color);
+    font-size: 24px;
+    padding: 10px;
+    margin:0;
+}
+
+.close{
+    background-color: transparent;
+    position: absolute;
+    top:5px;
+    right:5px;
+    font-size: 25px;
+    padding:0 10px;
+}
+
+.modal-form input{
+    padding : 8px;
+}
+
+.modal-form #contents{
+    margin-top: 20px;
+    width: 80%;
+    font-size: 20px;
+    border:none;
+    border-bottom: 1px solid black;
+}
+
+.form-control{
+    display: block;
+    margin:15px 0;
+    text-align: center;
+}
