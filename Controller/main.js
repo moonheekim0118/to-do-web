@@ -86,3 +86,22 @@ export const deleteAll=async(req,res,next)=>{
         return next(error);
     }
 }
+
+// 선택된 항목 삭제 
+export const deleteOne=async(req,res,next)=>{
+    try{
+        const postId = req.params.postId; 
+        const post = Post.findById(postId);
+        if(!post){
+            throw new Error('there is no Post');
+        }
+        await Post.deleteOne({'userId':req.user._id, _id:postId});
+        const length = await Post.countDocuments({'userId':req.user._id}); // 남은 post 개수 전달
+        return res.status(200).json({message:'succeed', length:length});
+    }catch(err)
+    {
+        const error = new Error(err);
+        error.httpStatusCode= 500;
+        return next(error);
+    }
+}

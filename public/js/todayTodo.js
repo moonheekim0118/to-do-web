@@ -46,7 +46,7 @@ async function addTodo(dom){
                     <i class="fas fa-ellipsis-v"></i>
                   </button>
                   <div class="dropdown-content">
-                    <a href="#">delete</a>
+                  <button onclick="removeOne(this)">delete</button>
                     <a href="#">edit</a>
                   </div>
             </div>
@@ -89,7 +89,7 @@ async function DoneCheck(dom){
 
 
 async function clearAll(dom){
-    const $ul = document.querySelector('.todo-list');
+    const ul = document.querySelector('.todo-list');
     const method = "DELETE"
     const csrf=document.querySelector('[name=_csrf]').value;
    try{
@@ -103,8 +103,37 @@ async function clearAll(dom){
     });
     const  data = await result.json();
     console.log(data);
-    $ul.innerHTML='';
-    $ul.classList.add('hidden'); // ul 안보이게 바꾸기 
+    ul.innerHTML='';
+    ul.classList.add('hidden'); // ul 안보이게 바꾸기 
     dom.classList.add('removed'); // clear all button 안보이게 바꾸기 
     }catch(err){console.log(err)}
+}
+
+async function removeOne(dom){
+    const dropdown = dom.parentNode;
+    const li =dropdown.parentNode.parentNode;
+    const id = li.querySelector('#postId').value;
+    const ul = document.querySelector('.todo-list');
+    const clearBtn= document.querySelector('#clear');
+    const csrf=document.querySelector('[name=_csrf]').value;
+    const method = 'DELETE';
+    try{
+        const result =await fetch('/delete-one/'+id,
+        {
+            method:method,
+            headers:{
+                'Accept': 'application/json',
+                'csrf-token':csrf
+            }
+        })
+        const data = await result.json();
+        ul.removeChild(li); // 삭제되었으니 해당 li 삭제 
+        if(data.length === 0){ // 전달받은 남은 post 개수가 0이라면 ul과 button도 삭제해줘야함 
+            ul.classList.add('hidden');
+            clearBtn.classList.add('removed');
+        }
+    }catch(err){
+        console.log(err);
+    }
+    
 }
