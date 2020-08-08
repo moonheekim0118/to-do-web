@@ -4,19 +4,19 @@ const modal_container =document.querySelector('.modal-container');
 const close = document.querySelector('.close');
 const csrf=document.querySelector('[name=_csrf]').value;
 // ---------------- Helper 함수 --------------------------------------
-function closeModal(){ // modal 닫는 함수 
+window.closeModal= function (){ // modal 닫는 함수 
     modal_container.classList.remove('show-modal');
 }
 
 // ul 삭제해주는 함수 
-function removeUl(){
+window.removeUl=function (){
     ul.innerHTML='';
     ul.classList.add('hidden'); // ul 안보이게 바꾸기 
     clearBtn.classList.add('removed'); // clear all button 안보이게 바꾸기 
 }
 
 // li 변경 함수 
-function updateli(li,contents,id)
+window.updateli=function(li,contents,id)
 {
     li.innerHTML= 
     `<input type="checkbox" id="doneToggle" onClick="DoneCheck(this)">
@@ -35,7 +35,7 @@ function updateli(li,contents,id)
 }
 
 // Edit 후 변경된 contents를 적용해주는 함수 
-function updatedUI(contents, id)
+window.updatedUI=function(contents, id)
 {
     const AllToDos=ul.querySelectorAll('li'); // ul에서 li들을 모두 가져옴 
     AllToDos.forEach(li=>{
@@ -48,7 +48,7 @@ function updatedUI(contents, id)
 
 // ----------------------- Onclick event 함수 ------------------------------
 // to do 추가 함수 
-async function addTodo(dom){
+window.addTodo=async function(dom){
     const contents = document.querySelector('input[name="task"]').value;
     if(contents.length <=0){ // contents 입력 안하고 submit 할 시
         return alert('please type contents of your todo!');
@@ -93,7 +93,7 @@ async function addTodo(dom){
 
 // check status 저장 -> html에서 해결해줌 
 // toto is done 체크 저장 함수 
-async function DoneCheck(dom){
+window.DoneCheck=async function(dom){
     const li = dom.parentNode; // is done 체크된 항목 
     const checked =dom.checked;
     const id = li.querySelector('input[name="postId"]').value;
@@ -119,7 +119,7 @@ async function DoneCheck(dom){
 
 
 // to do 모두 삭제 함수 
-async function clearAll(dom){
+window.clearAll=async function (dom){
     const method = "DELETE"
    try{
     const result = await fetch('/delete-all', 
@@ -136,7 +136,7 @@ async function clearAll(dom){
 }
 
 // 특정 항목 삭제 함수 
-async function removeOne(dom){
+window.removeOne=async function(dom){
     const dropdown = dom.parentNode;
     const li =dropdown.parentNode.parentNode;
     const id = li.querySelector('#postId').value;
@@ -161,7 +161,7 @@ async function removeOne(dom){
     
 }
 // modal을 띄우는 함수
-function popUpModal(dom)
+window.popUpModal=function(dom)
 {
     const dropdown = dom.parentNode;
     const li =dropdown.parentNode.parentNode;
@@ -176,7 +176,7 @@ function popUpModal(dom)
 
 
 // modal 내에서 edit submit을 누르면 실행되는 함수 
-async function updatePost(dom){
+window.updatePost=async function(dom){
     const id = localStorage.getItem('updateId'); // localstroage 에 저장해놓은 id 가져오기 
     const modal_contents = modal_container.querySelector('.modal-content');
     const contents = modal_contents.querySelector('#contents').value;

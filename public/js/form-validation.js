@@ -2,25 +2,25 @@
 /* sign up validation*/
 const form_container = document.getElementById('form-container');
 const email= document.getElementById('email');
-const name = document.getElementById('name');
+const name_ = document.getElementById('name');
 const password= document.getElementById('password');
 const confirmPassowrd=document.getElementById('Confirm-password');
 const form_controls =document.querySelectorAll('.form-control');
 
-function addError(input, message){
+window.addError=function (input, message){
     const form_control= input.parentNode;
     const small= form_control.querySelector('small');
     small.innerText=message;
     form_control.classList.add('error');
 }
 
-function addPass(input){
+window.addPass=function(input){
     const form_control= input.parentNode;
     form_control.classList.remove('error');
     form_control.classList.add('sucess');
 }
 
-function requiredCheck(input){
+widnow.requiredCheck=function(input){
     const inputLen= input.value.length;
         if(inputLen<=0){
             addError(input, `${input.id} is required`);
@@ -30,7 +30,7 @@ function requiredCheck(input){
         }
 }
 
-function lengthCheck(inputObj){
+window.lengthCheck=function(inputObj){
     const inputLen = inputObj.input.value.length;
     if(inputLen < inputObj.min){
         addError(inputObj.input, `${inputObj.input.id} must be at least ${inputObj.min}`);
@@ -44,7 +44,7 @@ function lengthCheck(inputObj){
 }
 
 
-function checkEmail(input){
+window.checkEmail=function(input){
     const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     if(re.test(input.value.trim())){
         addPass(input);
@@ -58,9 +58,9 @@ email.addEventListener('input', ()=>{
     checkEmail(email);
 })
 
-name.addEventListener('input', ()=>{
-    requiredCheck(name);
-    lengthCheck({input:name, min:2, max:10});
+name_.addEventListener('input', ()=>{
+    requiredCheck(name_);
+    lengthCheck({input: name_, min:2, max:10});
 })
 
 password.addEventListener('input', ()=>{

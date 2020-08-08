@@ -7,8 +7,8 @@ export const getLogin=(req,res,next)=>{
      if(req.session.isLoggedIn){
         return res.redirect('/');
      }
-     res.render('auth/login', {
-         pageTitle:'login',
+     res.render('auth/signIn', {
+         pageTitle:'signIn',
          ErrorMessage:'',
          oldInput:{email:'', password:''}
      });
@@ -24,9 +24,9 @@ export const postLogin=async (req,res,next)=>{
     const error = validationResult(req);
     const oldInput={email:email, password:password};
     if(!error.isEmpty()){
-        return res.status(422).render('auth/login',
+        return res.status(422).render('auth/signIn',
         {
-            pageTitle:'login',
+            pageTitle:'signIn',
             ErrorMessage: error.array()[0].msg,
             oldInput:oldInput
         })
@@ -35,9 +35,9 @@ export const postLogin=async (req,res,next)=>{
         // email과 password가 일치하는지 확인
         const user = await User.findOne({email:email});
         if(!user){ // error 
-            return res.status(422).render('auth/login',
+            return res.status(422).render('auth/signIn',
             {
-                pageTitle:'login',
+                pageTitle:'signIn',
                 ErrorMessage: 'Email dose not exist!',
                 oldInput:oldInput
             })
@@ -51,9 +51,9 @@ export const postLogin=async (req,res,next)=>{
                 res.redirect('/');
             }
             else{ // 일치하지 않는 경우 
-                return res.status(422).render('auth/login',
+                return res.status(422).render('auth/signIn',
                 {
-                    pageTitle:'login',
+                    pageTitle:'signIn',
                     ErrorMessage: 'Wrong Password!',
                     oldInput:oldInput
                 })
