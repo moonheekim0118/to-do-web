@@ -9,11 +9,11 @@ const {body}=validator;
 const router = express.Router();
 
 
-router.get('/login', getLogin);
+router.get('/signIn', getLogin);
 
 // 존재하지 않는 이메일 ==> Controller에서 검사 
 // Email 이 아닌지 확인 
-router.post('/login',[
+router.post('/signIn',[
     body('email').trim().isEmail().withMessage('Email is Required'),
     body('password').trim().isLength({min:6, max:12}).withMessage('Wrong password')
 ], postLogin);

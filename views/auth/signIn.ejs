@@ -1,20 +1,23 @@
-
 <%- include('../includes/head.ejs') %>
 <title><%= pageTitle%></title>
-<link rel="stylesheet" href="/css/form.css">
 </head>
 <body>
-    <class class="form-container">
+    <div class="form-container">
     <div id="goToIndex">
         <a href="/">TO DO</a>
     </div>
     <p id="message">Let's make your day 👌🏻</p>
-    <form action="/login" method="POST" id="form-container">
+    <form action="/signIn" method="POST" id="form-container">
         <div class="form-control">
             <label for="email">Email</label>
             <input type="email" name="email" id="email" placeholder="Enter Email" value=<%=oldInput.email %>>
             <small>Error Message</small>
         </div>
+        <!-- <div class="form-control" >
+            <label for="name">Name</label>
+            <input type="text" name="name" id="name" placeholder="Enter Name" >
+            <small>Error Message</small>
+        </div> -->
         <div class="form-control">
             <label for="password">Password</label>
             <input type="password" name="password" id="password" placeholder="Enter Password" value=<%=oldInput.password %>>
@@ -32,6 +35,6 @@
       </div>
     </form>                
     </div>
-    <script src="/js/form-validation.js"></script>
+    <script src="login_bundle.js"></script>
 </body>
-<%- include('../includes/footer.ejs') %>
+</html>
