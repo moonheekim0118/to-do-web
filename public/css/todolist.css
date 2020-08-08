@@ -96,9 +96,31 @@
 }
 
 #clear.removed{
-    visibility: hidden;
+    display: none;
 }
 
 .todo-list.hidden{
-    visibility: hidden;
+   display: none;
+}
+
+
+#sort{
+   text-decoration: none;
+   position: relative;
+   color: #04B4AE;
+   left:230px;
+   top:45px;
+   background-color: #ddd;
+   margin-bottom: 5px;
+   border-radius: 7px; 
+   padding:5px;
+}
+
+#sort:hover{
+    background-color: #04B4AE;
+    color: #ddd;
+}
+
+#sort.removed{
+    display: none;
 }

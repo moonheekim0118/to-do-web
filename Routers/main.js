@@ -1,4 +1,4 @@
-import { getIndex, getTodayToDo,addToDo,doneCheck,isDoneCheck,deleteAll,deleteOne,updatePost } from '../Controller/main.js';
+import { getIndex, getTodayToDo,addToDo,doneCheck,deleteAll,deleteOne,updatePost,sortPost } from '../Controller/main.js';
 import express from 'express';
 import isAuth from '../middleware/is-Auth.js';
 const router = express.Router();
@@ -16,4 +16,6 @@ router.delete('/delete-all',isAuth,deleteAll);
 router.delete('/delete-one/:postId', isAuth,deleteOne);
 
 router.put('/update-post',isAuth,updatePost);
+
+router.get('/sort-post',isAuth,sortPost);
 export default router;

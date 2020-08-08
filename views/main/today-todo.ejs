@@ -23,6 +23,7 @@
                 <label for="not">Not that Important!</label>
             </div>
         </form>
+        <a href="#" class="<%=todoList.length === 0? 'removed' : ''%>" id="sort">sort by importance</a>
         <ul class="todo-list <%=todoList.length === 0? 'hidden' : ''%>">
     <% if(todoList.length >0){ %>
         <% todoList.forEach(todo=>{ %>

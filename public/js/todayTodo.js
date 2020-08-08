@@ -3,6 +3,7 @@ const clearBtn= document.querySelector('#clear');
 const modal_container =document.querySelector('.modal-container'); 
 const close = document.querySelector('.close');
 const csrf=document.querySelector('[name=_csrf]').value;
+const sortBtn = document.querySelector('#sort');
 // ---------------- Helper 함수 --------------------------------------
 function closeModal(){ // modal 닫는 함수 
     modal_container.classList.remove('show-modal');
@@ -13,6 +14,7 @@ function removeUl(){
     ul.innerHTML='';
     ul.classList.add('hidden'); // ul 안보이게 바꾸기 
     clearBtn.classList.add('removed'); // clear all button 안보이게 바꾸기 
+    sortBtn.classList.add('removed'); // /sort button 안보이게 바꾸기 
 }
 
 // li 변경 함수 
@@ -208,6 +210,10 @@ async function updatePost(dom){
     }
 }
 
+function sortByImportance()
+{
+    
+}
 
 // --------- event listeners ----------------
 close.addEventListener('click',closeModal);

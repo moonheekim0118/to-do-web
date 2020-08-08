@@ -7,7 +7,7 @@ export const getIndex=(req,res,next)=>{
 }
 
 export const getTodayToDo=async(req,res,next)=>{
-    const todos = await Post.find({userId:req.user._id});
+    const todos = await Post.find({'userId':req.user._id});
     res.render('main/today-todo', {
         pageTitle:'today to do',
         todoList: todos,
@@ -140,4 +140,11 @@ export const updatePost = async(req,res,next)=>
         error.httpStatusCode= 500;
         return next(error);
     }
+}
+
+export const sortPost= async(req,res,next)=>
+{
+    const post = await Post.find({'userId':req.user._id}).sort({'importance':-1});
+    console.log(post);
+    res.redirect('/');
 }
