@@ -1,2 +1,2 @@
-import './form-validation.js';
 import '../css/form.css'
+import './form-validation.js';

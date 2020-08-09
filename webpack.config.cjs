@@ -5,8 +5,7 @@ module.exports ={
     entry :{ 
         index:"./public/js/index.js",
         todayTodo:"./public/js/today.js",
-        sign:"./public/js/sign.js",
-        login:"./public/js/login.js"
+        sign:"./public/js/sign.js"
         
     },
     output:{
