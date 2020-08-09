@@ -17,7 +17,11 @@ const postSchema = new Schema({
     importance:{
         type:Number,
         required:true
+    },
+    createdAt:{
+        type:Date,
+        required:true
     }
-}, {timestamps: true})
+})
 
 export default mongoose.model('Post', postSchema);

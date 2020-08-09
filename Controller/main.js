@@ -7,7 +7,8 @@ export const getIndex=(req,res,next)=>{
 }
 
 export const getTodayToDo=async(req,res,next)=>{
-    const todos = await Post.find({'userId':req.user._id});
+    const today =new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate()); // 오늘 등록된 투두만 보여준다. 
+    const todos = await Post.find({'userId':req.user._id,'createdAt':today});
     res.render('main/today-todo', {
         pageTitle:'today to do',
         todoList: todos,
@@ -18,6 +19,7 @@ export const getTodayToDo=async(req,res,next)=>{
 export const addToDo=async (req,res,next)=>{
     const contents = req.body.contents;
     const importanceRate = req.body.importance;
+    const today =new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate()); // 오늘 날짜를 넣어준다. 
     let importance;
     if(importanceRate == 'strong'){
         importance=3;
@@ -27,7 +29,7 @@ export const addToDo=async (req,res,next)=>{
         importance=1;
     }
     try{
-        const post = await new Post({userId:req.user._id, contents:contents , isDone: false, importance:importance});
+        const post = await new Post({userId:req.user._id, contents:contents , isDone: false, importance:importance, createdAt:today });
         await post.save();
         if(!post){
             return  res.status(501).json({message:'failed'});
