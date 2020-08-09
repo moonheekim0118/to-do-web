@@ -97,8 +97,9 @@ export const deleteOne=async(req,res,next)=>{
         if(!post){
             throw new Error('there is no Post');
         }
+        const today =new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate()); 
         await Post.deleteOne({'userId':req.user._id, _id:postId});
-        const length = await Post.countDocuments({'userId':req.user._id}); // 남은 post 개수 전달
+        const length = await Post.countDocuments({'userId':req.user._id,'createdAt':today}); // 남은 post 개수 전달
         return res.status(200).json({message:'succeed', length:length});
     }catch(err)
     {
@@ -146,7 +147,13 @@ export const updatePost = async(req,res,next)=>
 
 export const sortPost= async(req,res,next)=>
 {
-    const post = await Post.find({'userId':req.user._id}).sort({'importance':-1});
-    console.log(post);
-    res.redirect('/');
+    try{
+        const today =new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate()); 
+        const post = await Post.find({'userId':req.user._id, 'createdAt':today}).sort({'importance':-1});
+        return res.status(200).json({post:post});
+    }catch(err) {
+        const error = new Error(err);
+        error.httpStatusCode= 500;
+        return next(error);
+    }
 }

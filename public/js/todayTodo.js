@@ -83,6 +83,9 @@ window.addTodo=async function(dom){
             if(clearBtn.classList.contains('removed')){ // 첫번째 todo 로 등록될 경우
                 clearBtn.classList.remove('removed'); //숨겨졌던 clear all visible하게 바꾸기 
             } 
+            if(sortBtn.classList.contains('removed')){
+                sortBtn.classList.remove('removed');
+            }
             li.classList.add('todo');
             updateli(li,post.contents,post._id);
             ul.appendChild(li);
@@ -210,9 +213,18 @@ window.updatePost=async function(dom){
     }
 }
 
-function sortByImportance()
+window.sortByImportance=async function () // 중요도 순으로 정렬해주는 함수 
 {
-    
+    const result = await fetch('/sort-post');
+    const data = await result.json();
+    const post = data.post;
+    ul.innerHTML=''; // 일단 ul 모두 비우고, 
+    post.forEach(p=>{ // 새로 받은 값으로 ul - li 채우기 
+        const li = document.createElement('li');
+        li.classList.add('todo');
+        updateli(li,p.contents, p._id); // li 새로 생성 
+        ul.appendChild(li);
+    });
 }
 
 // --------- event listeners ----------------
