@@ -124,3 +124,13 @@
 #sort.removed{
     display: none;
 }
+
+
+@media (max-width:700px){
+    #sort{
+        left: 140px;
+    }
+    .todo-list{
+        width: 400px;
+    }
+}

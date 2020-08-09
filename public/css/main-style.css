@@ -19,6 +19,7 @@ body{
 body.show-nav{
     transform: translateX(300px);
 }
+
 button , .button, input[type='submit'], input[type='button']{
     text-decoration: none;
     color: black;
@@ -138,4 +139,23 @@ header .toggle{
 
 .notSingin a:hover{
     color: var(--secondary-color);
+}
+
+
+
+@media (max-width:700px){
+   header{
+       height: 60px;
+       position: fixed;
+       top:0;
+       left:0;
+       width:100%;
+       z-index: 1;
+   }
+   header  #titleOfHeader{
+       font-size: 30px;
+   }
+   header #contents{
+       display: none;
+   }
 }

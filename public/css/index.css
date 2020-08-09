@@ -17,3 +17,13 @@
 .container #quotes{
     font-size: 30px;
 }
+
+
+@media (max-width:700px){
+    .container #quotes{
+        display: none;
+    }
+    .container {
+        background-size:100% 100%;
+    }
+}
