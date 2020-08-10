@@ -1,0 +1,37 @@
+
+.post-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+}
+.post{
+    display: block;
+    border: 1px solid black;
+    width: 700px;
+    height: 100px;
+    margin : 40px 0;
+    font-size:40px;
+    padding: 30px;
+    text-align: center;
+    background-color: #dfececc5;
+    border : 2px solid #bbb8b8;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    border-radius: 5px;
+}
+
+.post a {
+    text-decoration: none;
+    color: black;
+}
+
+.post-container h1{
+    text-align: center;
+}
+
+@media (max-width:800px){
+    .post{
+        width: 500px;
+    }
+}

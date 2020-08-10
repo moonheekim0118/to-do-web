@@ -157,3 +157,22 @@ export const sortPost= async(req,res,next)=>
         return next(error);
     }
 }
+
+export const getPosts = async(req,res,next)=>{
+    const posts=[]; // 날짜 리스트
+    // 해당 User의 모든 Post를 날짜별로 (높은순) sort한다.
+    // 해당 날짜가 posts 배열에 아직 안들어있다면 넣어준다.
+    const post = await Post.find({'userId':req.user._id}).sort({'createdAt':-1});
+    post.forEach(p=>{
+        const date=p.createdAt.toISOString().replace('-', '/').split('T')[0].replace('-', '/');
+        if(!posts.includes(date)){
+            posts.push(date);
+        }
+    })
+    res.render('main/todo-post',
+    {
+        pageTitle:'todo posts',
+        postList: posts,
+        userName: req.user.name
+    });
+}

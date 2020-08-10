@@ -1,0 +1,22 @@
+<%- include('../includes/head.ejs') %>
+<title><%= pageTitle%></title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+</head>
+<body>
+    <%- include('../includes/nav.ejs') %>
+    <%- include('../includes/header.ejs') %>
+    <div class="post-container">
+        <ul class="post-list">
+           <!--받아온 날짜 출력-->
+           <% if(postList.length > 0 ){ %>
+            <% postList.forEach((post, i)=>{%>
+                <li class="post">  <a href="<%='/todo-post?post_date='+post%>"> <%=post%></a> </li>
+                <%}) %>
+            <% } else {%>
+                <h1>There is no todo list yet</h1>
+            <% } %>
+        </ul>
+    </div>
+    <script src="postList_bundle.js"></script>
+</body>
+</html>
