@@ -1,0 +1,41 @@
+<%- include('../includes/head.ejs') %>
+<title><%= pageTitle%></title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+</head>
+<body>
+    <%- include('../includes/nav.ejs') %>
+    <%- include('../includes/header.ejs') %>
+    <div class="post-container">
+        <h1 class="NotDone-logo <%=NotDone.length === 0? 'hidden' : ''%>">Not Done Yet!</h1>
+        <ul class="NotDone-list  <%=NotDone.length === 0? 'hidden' : ''%>">
+            <% if(NotDone.length >0){ %>
+                <% NotDone.forEach(todo=>{ %>
+            <li class="post">
+                <input type="hidden"  name="_csrf"  value="<%= csrfToken%>"  >
+                <input type="hidden"  name="date"  value="<%= date%>"  >
+                <input type="checkbox" id="doneToggle" onClick="doneCheck(this)">
+                <input type="hidden" name="postId" id="postId" value="<%=todo._id%>"">
+                <%= todo.contents %>
+            </li>
+            <% }) %>
+         <%}%>
+        </ul>
+        <h1 class="Done-logo <%=Done.length === 0? 'hidden' : ''%>">Successfully Done!</h1>
+        <ul class="Done-list  <%=Done.length === 0? 'hidden' : ''%>">
+            <% if(Done.length >0){ %>
+                <% Done.forEach(todo=>{ %>
+            <li class="post">
+                <input type="hidden"  name="_csrf"  value="<%= csrfToken%>"  >
+                <input type="hidden"  name="date"  value="<%= date%>"  >
+                <input type="checkbox" id="doneToggle" onClick="doneCheck(this)" checked>
+                <input type="hidden" name="postId" id="postId" value="<%=todo._id%>"">
+                <%= todo.contents %>
+             </li>
+             <% }) %>
+             <%}%>
+        </ul>
+        <a href="/todo-post" class="button">Back to list</a>
+    </div>
+    <script src="detail_bundle.js"></script>
+</body>
+</html>

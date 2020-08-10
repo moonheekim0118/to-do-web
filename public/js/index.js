@@ -1,4 +1,4 @@
-import "./nav.js";
+import "./originSource/nav.js";
 import "../css/main-style.css";
 import "../css/index.css";
 

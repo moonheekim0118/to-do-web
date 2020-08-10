@@ -61,21 +61,6 @@ export const doneCheck=async(req,res,next)=>{
 }
 
 
-export const isDoneCheck =async(req,res,next)=>{
-    const postId = req.parmas.postId;
-    try{
-        const post = await Post.findById(postId);
-        if(!post){
-            return  res.status(501).json({message:'failed'});
-        }
-        return res.status(200).json({message:'succeed', done:post.isDone});
-    }catch(err){
-        const error = new Error(err);
-        error.httpStatusCode= 500;
-        return next(error);
-    }
-}
-
 export const deleteAll=async(req,res,next)=>{
     // 현재 req user에 해당하는 모든 아이템 지우기.
     try{
@@ -175,4 +160,46 @@ export const getPosts = async(req,res,next)=>{
         postList: posts,
         userName: req.user.name
     });
+}
+
+export const getPostDetail = async(req,res,next)=>{ // 특정 날짜를 query로 받아와서, 해당날짜에 작성한 todo list보여주기 
+    let date = req.query.post_date;
+    const year = +date.slice(0,4);
+    const month = +date.slice(5,7);
+    let day= +date.slice(8,10);
+    day++;
+    const dateFormat = month+'/'+day+'/'+year;
+    const detailDate = new Date(dateFormat);
+    const NotDonePosts = await Post.find({'userId':req.user._id , 'createdAt': detailDate, 'isDone':false});
+    const DonePosts =await Post.find({'userId':req.user._id , 'createdAt': detailDate, 'isDone':true});
+    res.render('main/todo-detail', 
+    {
+        pageTitle: 'todo detail',
+        NotDone: NotDonePosts,
+        Done:DonePosts,
+        date:detailDate,
+        userName: req.user.name
+    }); 
+}
+
+
+export const detaildoneCheck=async(req,res,next)=>{
+    const done = req.body.isDone;
+    const postId= req.body.id;
+    const date = req.body.date;
+    try{
+        const post = await Post.findById(postId);
+        if(!post){
+            return  res.status(501).json({message:'failed'});
+        }
+        post.isDone = done;
+        await post.save();
+        const DoneLength = (await Post.find({'userId':req.user._id, 'createdAt': date, isDone:'true'})).length;
+        const NotDoneLength=(await Post.find({'userId':req.user._id, 'createdAt': date, isDone:'false'})).length;
+        return res.status(200).json({DoneLength:DoneLength,NotDoneLength:NotDoneLength });
+    }catch(err){
+        const error = new Error(err);
+        error.httpStatusCode= 500;
+        return next(error);
+   }
 }

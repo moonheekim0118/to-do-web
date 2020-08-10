@@ -10,7 +10,7 @@
            <!--받아온 날짜 출력-->
            <% if(postList.length > 0 ){ %>
             <% postList.forEach((post, i)=>{%>
-                <li class="post">  <a href="<%='/todo-post?post_date='+post%>"> <%=post%></a> </li>
+                <li class="post">  <a href="<%='/todo-post-detail?post_date='+post%>"> <%=post%></a> </li>
                 <%}) %>
             <% } else {%>
                 <h1>There is no todo list yet</h1>

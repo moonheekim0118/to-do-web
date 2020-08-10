@@ -156,14 +156,14 @@ eval("var api = __webpack_require__(/*! ../../node_modules/style-loader/dist/run
 
 /***/ }),
 
-/***/ "./public/js/nav.js":
-/*!**************************!*\
-  !*** ./public/js/nav.js ***!
-  \**************************/
+/***/ "./public/js/originSource/nav.js":
+/*!***************************************!*\
+  !*** ./public/js/originSource/nav.js ***!
+  \***************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("const nav_btn = document.getElementById('toggle');\r\nnav_btn.addEventListener('click', ()=>{\r\n    document.body.classList.toggle('show-nav');\r\n})\r\n\n\n//# sourceURL=webpack:///./public/js/nav.js?");
+eval("const nav_btn = document.getElementById('toggle');\r\nnav_btn.addEventListener('click', ()=>{\r\n    document.body.classList.toggle('show-nav');\r\n})\r\n\n\n//# sourceURL=webpack:///./public/js/originSource/nav.js?");
 
 /***/ }),
 
@@ -175,7 +175,7 @@ eval("const nav_btn = document.getElementById('toggle');\r\nnav_btn.addEventList
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _css_post_list_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../css/post-list.css */ \"./public/css/post-list.css\");\n/* harmony import */ var _css_post_list_css__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_css_post_list_css__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _nav_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./nav.js */ \"./public/js/nav.js\");\n/* harmony import */ var _nav_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_nav_js__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _css_main_style_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../css/main-style.css */ \"./public/css/main-style.css\");\n/* harmony import */ var _css_main_style_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_css_main_style_css__WEBPACK_IMPORTED_MODULE_2__);\n\r\n\r\n\n\n//# sourceURL=webpack:///./public/js/post-list.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _css_post_list_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../css/post-list.css */ \"./public/css/post-list.css\");\n/* harmony import */ var _css_post_list_css__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_css_post_list_css__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _css_main_style_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../css/main-style.css */ \"./public/css/main-style.css\");\n/* harmony import */ var _css_main_style_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_css_main_style_css__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _originSource_nav_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./originSource/nav.js */ \"./public/js/originSource/nav.js\");\n/* harmony import */ var _originSource_nav_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_originSource_nav_js__WEBPACK_IMPORTED_MODULE_2__);\n\r\n\r\n\n\n//# sourceURL=webpack:///./public/js/post-list.js?");
 
 /***/ })
 
