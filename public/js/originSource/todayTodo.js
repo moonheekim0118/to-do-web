@@ -21,7 +21,13 @@ window.removeUl=function (){
 window.updateli=function(li,contents,id)
 {
     li.innerHTML= 
-    `<input type="checkbox" id="doneToggle" onClick="DoneCheck(this)">
+    `<input type="checkbox" id="doneToggle" class="todo__state" onClick="DoneCheck(this)">
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 200 25" class="todo__icon">
+            <use xlink:href="#todo__line" class="todo__line"></use>
+            <use xlink:href="#todo__box" class="todo__box"></use>
+            <use xlink:href="#todo__check" class="todo__check"></use>
+            <use xlink:href="#todo__circle" class="todo__circle"></use>
+        </svg>
         <input type="hidden" name="postId" id="postId" value="${id}"">
         <span id='contents'>${contents}</span>
         <div class="dropdown">

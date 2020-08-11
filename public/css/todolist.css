@@ -1,4 +1,5 @@
 
+
 .todo-container{
     display: flex;
     justify-content: center;
@@ -7,6 +8,7 @@
     position: relative;
     margin : 50px auto;
     padding : 15px;
+    max-width: 100%;
     font-family: 'Thasadith', sans-serif;
     text-align: center;
 }
@@ -19,27 +21,158 @@
 }
 
 .todo-list{
-
     margin: 50px auto;
-    margin: 50px;
     list-style-type: none;
     font-size: 30px;
     text-align: center;
     width: 600px;
-    background-color: #dfececc5 ;
+    background-color: #fff;
     border-radius: 5px;
-    border: 2px solid #bbb8b8;
-    box-shadow:0 0 10px rgba(0, 0, 0, 0.3); 
+    box-shadow:0 5px 30px rgba(0,0,0,0.2);
 }
 
 .todo{
-    margin : 30px;
-    padding:8px
+    display: block;
+  position: relative;
+  padding: 1em 1em 1em 16%;
+  margin: 0 auto;
+  cursor: pointer;
+  border-bottom: solid 1px #ddd;
 }
 
-.todo.done{
-    text-decoration: line-through;
+.todo:last-child{
+    border-bottom: none;
 }
+
+.todo__state{
+    cursor: pointer;
+    position: absolute;
+    top: 30px;
+    left: 15px;
+    width: 400px;
+    height:30px;
+    z-index: 1;
+    opacity: 0;
+}
+.todo #contents{
+    color: #135156;
+    -webkit-transition: all 0.4s linear 0.4s;
+    transition: all 0.4s linear 0.4s;
+}
+
+.todo__icon {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 500px;
+    height: auto;
+    margin: auto;
+    fill: none;
+    stroke: #27FDC7;
+    stroke-width: 2;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+  }
+  .todo__line,
+  .todo__box,
+  .todo__check {
+    -webkit-transition: stroke-dashoffset 0.8s cubic-bezier(0.9, 0, 0.5, 1);
+    transition: stroke-dashoffset 0.8s cubic-bezier(0.9, 0, 0.5, 1);
+  }
+  .todo__circle {
+    stroke: #27FDC7;
+    stroke-dasharray: 1 6;
+    stroke-width: 0;
+    -webkit-transform-origin: 13.5px 12.5px;
+            transform-origin: 13.5px 12.5px;
+    -webkit-transform: scale(0.4) rotate(0deg);
+            transform: scale(0.4) rotate(0deg);
+    -webkit-animation: none 0.8s linear;
+            animation: none 0.8s linear;
+  }
+  @-webkit-keyframes explode {
+    30% {
+      stroke-width: 3;
+      stroke-opacity: 1;
+      -webkit-transform: scale(0.8) rotate(40deg);
+              transform: scale(0.8) rotate(40deg);
+    }
+    100% {
+      stroke-width: 0;
+      stroke-opacity: 0;
+      -webkit-transform: scale(1.1) rotate(60deg);
+              transform: scale(1.1) rotate(60deg);
+    }
+  }
+  @keyframes explode {
+    30% {
+      stroke-width: 3;
+      stroke-opacity: 1;
+      -webkit-transform: scale(0.8) rotate(40deg);
+              transform: scale(0.8) rotate(40deg);
+    }
+    100% {
+      stroke-width: 0;
+      stroke-opacity: 0;
+      -webkit-transform: scale(1.1) rotate(60deg);
+              transform: scale(1.1) rotate(60deg);
+    }
+  }
+  .todo__box {
+    stroke-dasharray: 56.1053, 56.1053;
+    stroke-dashoffset: 0;
+    -webkit-transition-delay: 0.16s;
+            transition-delay: 0.16s;
+  }
+  .todo__check {
+    stroke: #27FDC7;
+    stroke-dasharray: 9.8995, 9.8995;
+    stroke-dashoffset: 9.8995;
+    -webkit-transition-duration: 0.32s;
+            transition-duration: 0.32s;
+  }
+  .todo__line {
+    stroke-dasharray: 168, 1684;
+    stroke-dashoffset: 168;
+  }
+  .todo__circle {
+    -webkit-animation-delay: 0.56s;
+            animation-delay: 0.56s;
+    -webkit-animation-duration: 0.56s;
+            animation-duration: 0.56s;
+  }
+  .todo__state:checked ~ #contents {
+    -webkit-transition-delay: 0s;
+            transition-delay: 0s;
+    color: #5EBEC1;
+    opacity: 0.6;
+  }
+  .todo__state:checked~ .todo__icon .todo__box {
+    stroke-dashoffset: 56.1053;
+    -webkit-transition-delay: 0s;
+            transition-delay: 0s;
+  }
+  .todo__state:checked ~ .todo__icon .todo__line {
+    stroke-dashoffset: -8;
+  }
+  .todo__state:checked ~ .todo__icon .todo__check {
+    stroke-dashoffset: 0;
+    -webkit-transition-delay: 0.48s;
+            transition-delay: 0.48s;
+  }
+  .todo__state:checked ~ .todo__icon .todo__circle {
+    -webkit-animation-name: explode;
+            animation-name: explode;
+  }
+
+.add-todo .newTask{
+    background-color: transparent;
+    border:none;
+    font-size:35px;
+    border-bottom:1px solid black;
+}
+
 
 .radio-box{
     margin-top: 20px;
