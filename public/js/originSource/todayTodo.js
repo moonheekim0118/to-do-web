@@ -55,9 +55,11 @@ window.addTodo=async function(dom){
     if(contents.length <=0){ // contents 입력 안하고 submit 할 시
         return alert('please type contents of your todo!');
     }
-    let importance=document.querySelector('input[name="importance"]:checked').id;
+    let importance=document.querySelector('input[name="importance"]:checked');
     if(importance===null){ // importance check 안할시 not 으로 자동 설정 
         importance='not';
+    }else{
+        importance=importance.id;
     }
     const sendingData = {contents: contents, importance: importance};
     const csrf=dom.parentNode.querySelector('[name=_csrf]').value;
