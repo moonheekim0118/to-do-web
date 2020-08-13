@@ -1,4 +1,4 @@
-import { getIndex, getTodayToDo,addToDo,doneCheck,deleteAll,deleteOne,updatePost,sortPost,getPosts,getPostDetail,detaildoneCheck } from '../Controller/main.js';
+import { getIndex, getTodayToDo,addToDo,doneCheck,deleteAll,deleteOne,updatePost,sortPost,getPosts,getPostDetail } from '../Controller/main.js';
 import express from 'express';
 import isAuth from '../middleware/is-Auth.js';
 const router = express.Router();
@@ -23,5 +23,4 @@ router.get('/todo-post',isAuth,getPosts);
 
 router.get('/todo-post-detail',isAuth,getPostDetail);
 
-router.put('/done-check-detail',isAuth,detaildoneCheck);
 export default router;

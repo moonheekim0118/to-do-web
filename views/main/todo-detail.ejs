@@ -5,35 +5,37 @@
 <body>
     <%- include('../includes/nav.ejs') %>
     <%- include('../includes/header.ejs') %>
+    <input type="hidden" name="notdone" value="<%=NotDoneLen%>">
+    <input type="hidden" name="done" value="<%=DoneLen%>">
     <div class="post-container">
-        <h1 class="NotDone-logo <%=NotDone.length === 0? 'hidden' : ''%>">Not Done Yet!</h1>
-        <ul class="NotDone-list  <%=NotDone.length === 0? 'hidden' : ''%>">
-            <% if(NotDone.length >0){ %>
-                <% NotDone.forEach(todo=>{ %>
-            <li class="post">
-                <input type="hidden"  name="_csrf"  value="<%= csrfToken%>"  >
-                <input type="hidden"  name="date"  value="<%= date%>"  >
-                <input type="checkbox" id="doneToggle" onClick="doneCheck(this)">
-                <input type="hidden" name="postId" id="postId" value="<%=todo._id%>"">
-                <%= todo.contents %>
-            </li>
-            <% }) %>
-         <%}%>
-        </ul>
-        <h1 class="Done-logo <%=Done.length === 0? 'hidden' : ''%>">Successfully Done!</h1>
-        <ul class="Done-list  <%=Done.length === 0? 'hidden' : ''%>">
-            <% if(Done.length >0){ %>
-                <% Done.forEach(todo=>{ %>
-            <li class="post">
-                <input type="hidden"  name="_csrf"  value="<%= csrfToken%>"  >
-                <input type="hidden"  name="date"  value="<%= date%>"  >
-                <input type="checkbox" id="doneToggle" onClick="doneCheck(this)" checked>
-                <input type="hidden" name="postId" id="postId" value="<%=todo._id%>"">
-                <%= todo.contents %>
-             </li>
-             <% }) %>
-             <%}%>
-        </ul>
+        <div class="work-info">
+            <div class="chart-info">
+                <p class="date"><%= date %></p>
+                <p class="total">Total amount of works <%= NotDoneLen+DoneLen %></p>
+                <p class="completed"> comlpeted <%= DoneLen %> </p>
+                <p class="uncompleted"> uncompleted <%= NotDoneLen %></p>
+            </div>
+            <div class="chart-container">
+                <canvas id="completeChart"></canvas>
+            </div>
+        </div>
+        
+        <div class="work-list">
+            <% if(DoneLen > 0) {%>
+            <ul class="done-list">
+                <% Done.forEach(item=>{ %>
+                    <li><%=item.contents%></li>
+                <% }) %>
+            </ul>
+            <% }%>
+            <% if (NotDoneLen > 0) { %>
+            <ul class="not-done-list">
+                <% NotDone.forEach(item=>{ %>
+                    <li><%=item.contents%></li>
+                <% }) %>
+            </ul>
+            <% } %>
+        </div>
         <a href="/todo-post" class="button">Back to list</a>
     </div>
     <script src="detail_bundle.js"></script>

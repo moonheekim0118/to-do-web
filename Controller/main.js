@@ -178,29 +178,9 @@ export const getPostDetail = async(req,res,next)=>{ // 특정 날짜를 query로
         pageTitle: 'todo detail',
         NotDone: NotDonePosts,
         Done:DonePosts,
-        date:detailDate,
+        date:dateFormat,
+        NotDoneLen:NotDonePosts.length,
+        DoneLen: DonePosts.length,
         userName: req.user.name
     }); 
-}
-
-
-export const detaildoneCheck=async(req,res,next)=>{
-    const done = req.body.isDone;
-    const postId= req.body.id;
-    const date = req.body.date;
-    try{
-        const post = await Post.findById(postId);
-        if(!post){
-            return  res.status(501).json({message:'failed'});
-        }
-        post.isDone = done;
-        await post.save();
-        const DoneLength = (await Post.find({'userId':req.user._id, 'createdAt': date, isDone:'true'})).length;
-        const NotDoneLength=(await Post.find({'userId':req.user._id, 'createdAt': date, isDone:'false'})).length;
-        return res.status(200).json({DoneLength:DoneLength,NotDoneLength:NotDoneLength });
-    }catch(err){
-        const error = new Error(err);
-        error.httpStatusCode= 500;
-        return next(error);
-   }
 }
