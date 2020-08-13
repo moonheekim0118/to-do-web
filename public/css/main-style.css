@@ -17,10 +17,6 @@ body{
     transition: transform 0.3s ease;
 }
 
-body.show-nav{
-    transform: translateX(300px);
-}
-
 button , .button, input[type='submit'], input[type='button']{
     text-decoration: none;
     color: black;
