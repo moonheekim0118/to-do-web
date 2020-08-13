@@ -1,0 +1,97 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Jura:wght@500&family=Thasadith:wght@700&display=swap&family=Bebas+Neue&display=swap');
+
+:root{
+    --primary-color:#04B4AE;
+    --secondary-color:#FFBF00;
+}
+
+/* header */
+
+header{
+    font-family: 'Bebas Neue', cursive;
+    text-align: center;
+    color: #fff;
+    position: relative;
+    margin: 0;
+    padding: 20px 0;
+    height: 150px;
+    background-color: var(--primary-color);
+}
+
+header #titleOfHeader{
+    font-size: 60px;
+    margin:15px;
+    text-decoration: none;
+    color: #fff;
+}
+
+header #contents{
+    margin:0;
+    padding:0;
+    font-size:30px;
+}
+
+header .toggle{
+    background-color: rgba(0,0,0,0.5);   
+    border: none;
+    position: absolute;
+    font-size: 10px;
+    padding: 7px 10px;
+    top:10px;
+    left:20px;
+}
+
+.SignIn{
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    margin-top:10px;
+}
+
+.SignIn .login{
+    font-size:24px; 
+    text-decoration:none;
+    color:#fff;
+    margin-right:10px;
+  }
+  
+  .SignIn .signUp{
+    color:var(--primary-color);
+    text-decoration:none;
+    background-color:#fff;
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-size:24px;
+  }
+
+  .SignIn .logout{
+    font-size:24px; 
+    text-decoration:none;
+    color:#fff;
+    margin-right:10px;
+  }
+
+
+  .SignIn .login:hover{
+    border-bottom: 2px solid #fff;
+  }
+
+
+
+@media (max-width:700px){
+   header{
+       height: 60px;
+       position: fixed;
+       top:0;
+       left:0;
+       width:100%;
+       z-index: 1;
+   }
+   header  #titleOfHeader{
+       font-size: 30px;
+   }
+   header #contents{
+       display: none;
+   }
+}

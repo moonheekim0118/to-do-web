@@ -1,4 +1,10 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Jura:wght@500&family=Thasadith:wght@700&display=swap&family=Bebas+Neue&display=swap');
+
+:root{
+    --primary-color:#04B4AE;
+    --secondary-color:#FFBF00;
+}
 
 .todo-container{
     display: flex;
