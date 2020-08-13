@@ -9,11 +9,13 @@
         <ul class="post-list">
            <!--받아온 날짜 출력-->
            <% if(postList.length > 0 ){ %>
+            <p>what you've done so far! 🤟 </p>
             <% postList.forEach((post, i)=>{%>
                 <li class="post">  <a href="<%='/todo-post-detail?post_date='+post%>"> <%=post%></a> </li>
                 <%}) %>
             <% } else {%>
-                <h1>There is no todo list yet</h1>
+                <p >There is no todo list yet 👻 Let's make it now! </p>
+                <a href="/today-todo" class="addTodoBtn button" id="addTodoBtn">add new to do</a>
             <% } %>
         </ul>
     </div>
