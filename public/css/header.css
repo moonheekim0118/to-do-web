@@ -9,27 +9,31 @@
 /* header */
 
 header{
+    display: flex;
     font-family: 'Bebas Neue', cursive;
-    text-align: center;
     color: #fff;
     position: relative;
     margin: 0;
     padding: 20px 0;
-    height: 150px;
+    height: 100px;
     background-color: var(--primary-color);
+    z-index: 1;
+    transition: all 1s ease 0s;
+    align-items: center;
+    justify-content: center;
+}
+
+header.sticky{
+    position: fixed;
+    top:0;
+    width:100%;
+    opacity: 0.7;
 }
 
 header #titleOfHeader{
     font-size: 60px;
-    margin:15px;
     text-decoration: none;
     color: #fff;
-}
-
-header #contents{
-    margin:0;
-    padding:0;
-    font-size:30px;
 }
 
 header .toggle{

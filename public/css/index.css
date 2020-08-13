@@ -12,13 +12,12 @@
     overflow: hidden;
     text-align: center;
     font-family: 'Thasadith', sans-serif;
-    text-align: center;
 }
 .container #logoTitle{
     font-family: 'Raleway Dots', cursive;
     font-size: 140px;
     font-weight: bold;
-    margin-top:10px;
+    margin-top:100px;
     margin-bottom: 30px;
     background: linear-gradient(to right, #fff, #fff 50%, #FFBF00 50%);
     background-clip: text;

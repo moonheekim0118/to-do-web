@@ -144,6 +144,17 @@ eval("\r\n/* sign up validation*/\r\nconst form_container = document.getElementB
 
 /***/ }),
 
+/***/ "./public/js/originSource/header.js":
+/*!******************************************!*\
+  !*** ./public/js/originSource/header.js ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("const headerBar = document.querySelector('header');\r\nconst sticky = headerBar.offsetTop;\r\n\r\nwindow.addEventListener(\"scroll\",editHeader);\r\n\r\nfunction editHeader(){\r\n    console.log(sticky);\r\n    if(window.pageYOffset > sticky){\r\n        headerBar.classList.add(\"sticky\");\r\n    }else{\r\n        headerBar.classList.remove(\"sticky\");\r\n    }\r\n}\n\n//# sourceURL=webpack:///./public/js/originSource/header.js?");
+
+/***/ }),
+
 /***/ "./public/js/sign.js":
 /*!***************************!*\
   !*** ./public/js/sign.js ***!
@@ -152,7 +163,7 @@ eval("\r\n/* sign up validation*/\r\nconst form_container = document.getElementB
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _css_form_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../css/form.css */ \"./public/css/form.css\");\n/* harmony import */ var _css_form_css__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_css_form_css__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _originSource_form_validation_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./originSource/form-validation.js */ \"./public/js/originSource/form-validation.js\");\n/* harmony import */ var _originSource_form_validation_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_originSource_form_validation_js__WEBPACK_IMPORTED_MODULE_1__);\n\r\n\r\n\n\n//# sourceURL=webpack:///./public/js/sign.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _css_form_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../css/form.css */ \"./public/css/form.css\");\n/* harmony import */ var _css_form_css__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_css_form_css__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _originSource_form_validation_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./originSource/form-validation.js */ \"./public/js/originSource/form-validation.js\");\n/* harmony import */ var _originSource_form_validation_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_originSource_form_validation_js__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _originSource_header_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./originSource/header.js */ \"./public/js/originSource/header.js\");\n/* harmony import */ var _originSource_header_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_originSource_header_js__WEBPACK_IMPORTED_MODULE_2__);\n\r\n\r\n\n\n//# sourceURL=webpack:///./public/js/sign.js?");
 
 /***/ })
 
