@@ -101,7 +101,7 @@ header{
     position: relative;
     margin: 0;
     padding: 20px 0;
-    height: 250px;
+    height: 150px;
     background-color: var(--primary-color);
 }
 
@@ -128,19 +128,40 @@ header .toggle{
     left:20px;
 }
 
-.notSingin{
-    margin: 20px;
+.SignIn{
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    margin-top:10px;
 }
 
-.notSingin a{
-    margin: 0px 8px;
+.SignIn .login{
+    font-size:24px; 
+    text-decoration:none;
+    color:#fff;
+    margin-right:10px;
+  }
+  
+  .SignIn .signUp{
+    color:var(--primary-color);
+    text-decoration:none;
+    background-color:#fff;
+    padding: 8px 15px;
+    border-radius: 5px;
     font-size:24px;
-    text-decoration: none;
-}
+  }
 
-.notSingin a:hover{
-    color: var(--secondary-color);
-}
+  .SignIn .logout{
+    font-size:24px; 
+    text-decoration:none;
+    color:#fff;
+    margin-right:10px;
+  }
+
+  
+  .SignIn .login:hover{
+    border-bottom: 2px solid #fff;
+  }
 
 
 

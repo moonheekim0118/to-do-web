@@ -62,9 +62,10 @@ export const doneCheck=async(req,res,next)=>{
 
 
 export const deleteAll=async(req,res,next)=>{
-    // 현재 req user에 해당하는 모든 아이템 지우기.
+    // 현재 req user에 해당하는 모든 아이템 지우기. 
+    const today =new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate());
     try{
-    await Post.deleteMany({'userId':req.user._id});
+    await Post.deleteMany({'userId':req.user._id, 'createdAt':today});
     return res.status(200).json({message:'succeed'});
     }catch(err)
     {

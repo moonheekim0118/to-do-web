@@ -8,7 +8,11 @@
 <div class="container">
     <!--is auth 인 경우에만 보이도록 수정 !! -->
     <p id="logoTitle"> Life is Plannable </p>
-    <a href="/today-todo" class="addTodoBtn button" id="addTodoBtn">add new to do</a>
+    <% if(isAuthenticated){ %>
+        <a href="/today-todo" class="addTodoBtn button" id="addTodoBtn">add new to do</a>
+    <% }  else {%>
+        <a href="/signup" class="signUp"> sign up! it's free!</a>
+    <% } %>
     <p id="line"> </p>
     <p id="quotes">″You can always change your plan, but only if you have one. I’m a big believer in to-do lists. <br> It helps us break life into small steps. I once put “get tenure” on my to-do list. That was naïve. <br> The most useful to-do list breaks tasks into small steps. <br>It’s like when I encourage Logan to clean his room by picking up one thing at a time.″</p>
      <h2></h2>

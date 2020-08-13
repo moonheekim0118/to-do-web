@@ -4,11 +4,14 @@
     </button>
     <a id="titleOfHeader" href="/">MAKE YOUR DAY PLANNABLE</a>
     <p id="contents"> plan your day, accomplish your day </p>
-    <!--is Auth 아닌 경우에만 띄워주기!-->
     <% if(!isAuthenticated) { %>
-    <div class="notSingin">
-        <a href="/signIn">Login</a>
-        <a href="/signup"> sign up</a>
-    </div>
-    <% } %>
+        <div class="SignIn">
+            <a href="/signIn" class="login">Login</a>
+            <a href="/signup" class="signUp"> sign up</a>
+        </div>
+    <% } else {%>
+        <div class="SignIn">
+            <a href="/logout" class="logout"> <i class="fas fa-sign-out-alt"></i> logout</a>
+        </div>
+    <% }  %>
 </header>
