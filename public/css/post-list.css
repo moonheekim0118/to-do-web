@@ -83,8 +83,9 @@
 
 
 
-@media (max-width:800px){
-    .post{
-        width: 500px;
+@media (max-width:992px){
+    .post-list{
+        margin-top: 110px;
+        width: 80%;
     }
 }

@@ -127,3 +127,13 @@
     -moz-box-shadow: 9px 10px 0px 2px rgba(240,239,216,0.73);
     box-shadow: 9px 10px 0px 2px rgba(240,239,216,0.73);
 }
+
+
+@media (max-width:950px){
+    .work-info{
+        flex-direction: column;
+    }
+    .work-list{
+        flex-direction: column;
+    }
+}

@@ -4,9 +4,17 @@ const modal_container =document.querySelector('.modal-container');
 const close = document.querySelector('.close');
 const csrf=document.querySelector('[name=_csrf]').value;
 const sortBtn = document.querySelector('#sort');
+const addTodoModal=document.getElementById("add-todo-modal");
+const addContainer=document.getElementById("add-modal-container");
+const add_close=document.getElementById('add-close');
 // ---------------- Helper 함수 --------------------------------------
 window.closeModal= function (){ // modal 닫는 함수 
     modal_container.classList.remove('show-modal');
+}
+
+
+window.addCloseModal = function(){
+    addContainer.classList.remove('show-modal');
 }
 
 // ul 삭제해주는 함수 
@@ -57,7 +65,12 @@ window.updatedUI=function(contents, id)
 // ----------------------- Onclick event 함수 ------------------------------
 // to do 추가 함수 
 window.addTodo=async function(dom){
-    const contents = document.querySelector('input[name="task"]').value;
+    let contents;
+    if(dom.value === 'add'){
+        contents = document.querySelector('input[name="task"]').value;
+    }else{
+        contents = document.querySelector('input[name="modal-task"]').value;
+    }
     if(contents.length <=0){ // contents 입력 안하고 submit 할 시
         return alert('please type contents of your todo!');
     }
@@ -68,7 +81,6 @@ window.addTodo=async function(dom){
         importance=importance.id;
     }
     const sendingData = {contents: contents, importance: importance};
-    const csrf=dom.parentNode.querySelector('[name=_csrf]').value;
     const method ="POST"; // post request 보낸다. 
     try{
         const result=await fetch('/add-todo',
@@ -98,6 +110,10 @@ window.addTodo=async function(dom){
             updateli(li,post.contents,post._id);
             ul.appendChild(li);
             document.querySelector('input[name="task"]').value='';
+        }
+        if(dom.value="AddModal"){
+            addCloseModal();
+            document.querySelector('input[name="modal-task"]').value='';
         }
     }catch(err){
         console.log(err);
@@ -193,7 +209,12 @@ window.updatePost=async function(dom){
     const id = localStorage.getItem('updateId'); // localstroage 에 저장해놓은 id 가져오기 
     const modal_contents = modal_container.querySelector('.modal-content');
     const contents = modal_contents.querySelector('#contents').value;
-    const importance =modal_contents.querySelector('input[name="importance"]:checked').id;
+    let importance =modal_contents.querySelector('input[name="importance"]:checked');
+    if(importance===null){
+        importance = 'not';
+    }else{
+        importance=importance.id;
+    }
     const method="PUT";
     const sendingData={id:id, contents: contents, importance:importance};
     if(contents.length <=0){ // contents 입력 안하고 submit 할 시
@@ -238,7 +259,17 @@ window.sortByImportance=async function () // 중요도 순으로 정렬해주는
 // --------- event listeners ----------------
 close.addEventListener('click',closeModal);
 
+add_close.addEventListener('click',addCloseModal);
 // modal 외부를 눌렀을 때도 modal 닫기
 window.addEventListener('click',(e)=>{
-    e.target == modal_container? closeModal() : false;
+    if(e.target===modal_container){
+        closeModal();
+    }
+    else if(e.target === addContainer){
+        addCloseModal();
+    }
 })
+
+addTodoModal.addEventListener("click", ()=>{
+    addContainer.classList.add("show-modal");
+});

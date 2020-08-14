@@ -3,7 +3,7 @@
 .container{
     background-image:url(images/background-img.webp) ;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: 100%  100%;
     color:#fff;
     margin : 0 auto;
     padding : 15px;
@@ -85,9 +85,9 @@
 
 @media (max-width:700px){
     .container #quotes{
-        display: none;
+       font-size: 15px;
     }
-    .container {
-        background-size:100% 100%;
+    .container #logoTitle {
+        font-size: 80px;
     }
 }

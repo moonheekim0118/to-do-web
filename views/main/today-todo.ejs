@@ -37,34 +37,39 @@
                 <label for="not">Not that Important!</label>
             </div>
         </form>
-        <a href="#" class="<%=todoList.length === 0? 'removed' : ''%>" id="sort" onclick="sortByImportance()">sort by importance</a>
-        <ul class="todo-list <%=todoList.length === 0? 'hidden' : ''%>">
-    <% if(todoList.length >0){ %>
-        <% todoList.forEach(todo=>{ %>
-            <li class="<%= todo.isDone ? 'todo done' : 'todo' %>">
-                <input type="checkbox" id="doneToggle" class="todo__state" onClick="DoneCheck(this)" <%= todo.isDone ? 'checked': '' %>>                        
-                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 200 25" class="todo__icon">
-                    <use xlink:href="#todo__line" class="todo__line"></use>
-                    <use xlink:href="#todo__box" class="todo__box"></use>
-                    <use xlink:href="#todo__check" class="todo__check"></use>
-                    <use xlink:href="#todo__circle" class="todo__circle"></use>
-                </svg>
-                <input type="hidden" name="postId" id="postId" value="<%=todo._id%>"">
-                <span id="contents"><%= todo.contents %></span>
-                <div class="dropdown">
-                    <button class="dropbtn">
-                        <i class="fas fa-ellipsis-v"></i>
-                      </button>
-                      <div class="dropdown-content">
-                        <a href="#" onclick="removeOne(this);return false;">delete</a>
-                        <a href="#" onclick="popUpModal(this);return false;" >edit</a>
-                      </div>
-                </div>
-            </li>
-        <% }) %>
-    <%}%>
-</ul>
+        <div class="todo-post">
+            <a href="#" class="<%=todoList.length === 0? 'removed' : ''%>" id="sort" onclick="sortByImportance();return false;">sort by importance</a>
+            <ul class="todo-list <%=todoList.length === 0? 'hidden' : ''%>">
+        <% if(todoList.length >0){ %>
+            <% todoList.forEach(todo=>{ %>
+                <li class="<%= todo.isDone ? 'todo done' : 'todo' %>">
+                    <input type="checkbox" id="doneToggle" class="todo__state" onClick="DoneCheck(this)" <%= todo.isDone ? 'checked': '' %>>                        
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 200 25" class="todo__icon">
+                        <use xlink:href="#todo__line" class="todo__line"></use>
+                        <use xlink:href="#todo__box" class="todo__box"></use>
+                        <use xlink:href="#todo__check" class="todo__check"></use>
+                        <use xlink:href="#todo__circle" class="todo__circle"></use>
+                    </svg>
+                    <input type="hidden" name="postId" id="postId" value="<%=todo._id%>"">
+                    <span id="contents"><%= todo.contents %></span>
+                    <div class="dropdown">
+                        <button class="dropbtn">
+                            <i class="fas fa-ellipsis-v"></i>
+                          </button>
+                          <div class="dropdown-content">
+                            <a href="#" onclick="removeOne(this);return false;">delete</a>
+                            <a href="#" onclick="popUpModal(this);return false;" >edit</a>
+                          </div>
+                    </div>
+                </li>
+            <% }) %>
+        <%}%>
+    </ul>
+        </div>
+      
 <button id="clear" class="<%= todoList.length===0 ? 'removed' : '' %>" onClick="clearAll(this)">Clear ALL</button>
+
+<button class="add-todo-modal" id="add-todo-modal">+</button>
 </div>
 <!--modal-->
 <div class="modal-container" id="modal-container">
@@ -97,6 +102,36 @@
         </div>
     </div>
 </div>
+    <div class="add-modal-container" id="add-modal-container">
+        <div class="add-modal">
+            <button class="add-close" id="add-close">
+                <i class="fa fa-times"></i>
+            </button>
+            <div class="add-modal-header">
+                Add new To do 
+            </div>
+            <div class="add-modal-content">
+                <form action="" class="add-modal-form">
+                    <div class="form-control">
+                        <input type="text" name="modal-task" class="newTask" placeholder="Add new To do">
+                    </div>
+                    <div class="form-control">
+                        <div class="radio-box">
+                            <input type="radio" name="importance" id="strong"> 
+                            <label for="strong">Very Important!</label>
+                            <input type="radio" name="importance" id="mid">
+                            <label for="mid">Kindof..Important!</label>
+                            <input type="radio" name="importance" id="not">
+                            <label for="not">Not that Important!</label>
+                        </div>
+                    </div>
+                    <div class="form-control">
+                        <input type="button" onclick="addTodo(this)" value="AddModal" class="Add">
+                    </div>
+                </form>                
+            </div>
+        </div>
+    </div>
 <script src="todayTodo_bundle.js"></script>
 </body>
 </html>

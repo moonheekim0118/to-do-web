@@ -82,8 +82,7 @@ header .toggle{
   }
 
 
-
-@media (max-width:700px){
+@media (max-width:950px){
    header{
        height: 60px;
        position: fixed;
@@ -93,9 +92,21 @@ header .toggle{
        z-index: 1;
    }
    header  #titleOfHeader{
-       font-size: 30px;
+       font-size: 25px;
    }
-   header #contents{
-       display: none;
-   }
+   .SignIn{
+    top:5px;
+    right:0;
+    }
+    .SignIn .login{
+        font-size: 20px;
+    }
+
+    .SignIn .signUp{
+        font-size: 20px;
+    }
+
+    .SignIn .logout{
+        font-size: 20px;
+    }
 }

@@ -26,12 +26,18 @@
     border-bottom:1px solid black;
 }
 
+.todo-post{
+  position: relative;
+  width:40%;
+  height: 100%;
+}
+
 .todo-list{
     margin: 50px auto;
     list-style-type: none;
     font-size: 30px;
     text-align: center;
-    width: 600px;
+    width: 100%;
     background-color: #fff;
     border-radius: 5px;
     box-shadow:0 5px 30px rgba(0,0,0,0.2);
@@ -55,7 +61,7 @@
     position: absolute;
     top: 30px;
     left: 15px;
-    width: 400px;
+    width: 80%;
     height:30px;
     z-index: 1;
     opacity: 0;
@@ -71,7 +77,7 @@
     top: 0;
     bottom: 0;
     left: 0;
-    width: 500px;
+    width: 80%;
     height: auto;
     margin: auto;
     fill: none;
@@ -244,11 +250,11 @@
 
 
 #sort{
+  position: absolute;
    text-decoration: none;
-   position: relative;
    color: #04B4AE;
-   left:230px;
-   top:45px;
+   top: 15px;
+   right: 10px;
    background-color: #ddd;
    margin-bottom: 5px;
    border-radius: 7px; 
@@ -264,11 +270,91 @@
     display: none;
 }
 
-@media (max-width:700px){
-    #sort{
-        left: 140px;
-    }
-    .todo-list{
-        width: 400px;
-    }
+/* 미디어 쿼리로 특정 width 넘겼을 때에는 , 위에 add to do 폼 없애고,
+아래에  + 버튼 추가하여 모달창 띄워서 폼 띄워줌*/
+
+.add-todo-modal{
+  margin-top:5px;
+  font-size: 30px;
+  border: 5px solid #fff;
+  border-radius: 50%;
+  display: none;
+  position: fixed;
+  bottom:0px;
+}
+
+.add-modal-container{
+  background-color: rgba(0,0,0,0.2);
+  position: fixed;
+  top:0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  display:none;
+}
+
+.add-modal-container.show-modal{
+  display: block;
+}
+
+.add-modal{
+  font-family: 'Thasadith', sans-serif;
+  background-color: #fff;
+  position: absolute;
+  border-radius: 5px;
+  box-shadow:0 0 10px rgba(0, 0, 0, 0.3); 
+  overflow: hidden;
+  top:50%;
+  left:50%;
+  max-width: 100%;
+  transform: translate(-50%, -50%);
+  width:90%;
+}
+
+
+
+.add-modal-header{
+  background-color: var(--primary-color);
+  font-size: 24px;
+  padding: 10px;
+  margin:0;
+}
+
+.add-close{
+  background-color: transparent;
+  position: absolute;
+  top:5px;
+  right:5px;
+  font-size: 25px;
+  padding:0 10px;
+}
+
+.add-modal-form input{
+  padding : 8px;
+}
+
+.add-modal-form .newTask{
+  margin-top: 20px;
+  width: 80%;
+  font-size: 20px;
+  border:none;
+  border-bottom: 1px solid black;
+}
+
+
+
+@media (max-width:1000px){
+
+  .todo-post{
+    width: 90%;
+  }
+
+  .add-todo{
+    display: none;
+  }
+
+  .add-todo-modal{
+    display: block;
+  }
 }

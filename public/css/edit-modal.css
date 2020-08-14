@@ -30,9 +30,10 @@
     overflow: hidden;
     top:50%;
     left:50%;
+    z-index: 1;
     max-width: 100%;
     transform: translate(-50%, -50%);
-    width:500px;
+    width:40%;
 }
 
 
@@ -69,3 +70,12 @@
     margin:15px 0;
     text-align: center;
 }
+
+
+
+@media (max-width:1000px){
+
+    .modal{
+        width:90%;
+    }
+  }
