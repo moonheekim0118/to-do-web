@@ -1,11 +1,11 @@
 
 /* sign up validation*/
-const form_container = document.getElementById('form-container');
+const form_container = document.getElementById('sign__form');
 const email= document.getElementById('email');
 const name_ = document.getElementById('name');
 const password= document.getElementById('password');
 const confirmPassowrd=document.getElementById('Confirm-password');
-const form_controls =document.querySelectorAll('.form-control');
+const form_controls =document.querySelectorAll('.form__control');
 
 window.addError=function (input, message){
     const form_control= input.parentNode;

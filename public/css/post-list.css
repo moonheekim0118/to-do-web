@@ -4,7 +4,7 @@
     --secondary-color:#FFBF00;
 }
 
-.post-container{
+.post__container{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -12,7 +12,7 @@
     margin: 0;
 }
 
-.post-list{
+.post__list{
     margin: 50px auto;
     list-style-type: none;
     font-size: 30px;
@@ -21,7 +21,7 @@
     padding: 50px;
 }
 
-.post-list p{
+.post__list p{
     margin-top: 30px;
     margin-right: 25px;
 }
@@ -84,7 +84,7 @@
 
 
 @media (max-width:992px){
-    .post-list{
+    .post__list{
         margin-top: 110px;
         width: 80%;
     }

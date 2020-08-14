@@ -22,7 +22,7 @@ nav.show-nav{
     
 }
 
-nav .nav-toggle{
+nav .close__btn{
     background-color: rgba(0,0,0,0.5);   
     font-size: 10px;
     padding: 7px 10px;
@@ -34,7 +34,7 @@ nav .nav-toggle{
 }
 
 
-.nav-container{
+.nav__container{
     background-color: var(--primary-color);
     width: 300px;
     min-height: 100vh;
@@ -46,41 +46,41 @@ nav .nav-toggle{
 }
 
 
-.nav-container .logo{
+.nav__container .user__info{
     padding: 20px 0;
     text-align: center;
 }
 
 
-.nav-container .logo p{
+.nav__container .user__info .user__quotes{
     color: #fff;
     font-size:24px;
 }
 
-.nav-container ul{
+.nav__container .list__container{
     list-style-type: none;
     margin :0;
     padding : 0;
 }
 
-.nav-container li{
+.nav__container .list__container .single__list{
     margin: 50px 0;
     text-align: center;
 }
 
-.nav-container ul li a{
+.nav__container .list__container .single__list a{
     color: #fff;
     font-size:24px;
     text-decoration: none;
 }
 
-nav ul li a:hover{
+.nav__container .list__container .single__list a:hover{
     color: var(--secondary-color);
     
 }
 
 
-nav .settingBtn{
+nav .setting__btn{
     position: absolute;
     top : 10px;
     left: 25px;

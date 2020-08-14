@@ -1,6 +1,6 @@
 const nav_bar= document.querySelector('nav');
-const close_btn =document.getElementById('nav-toggle');
-const nav_btn = document.getElementById('toggle');
+const close_btn =document.getElementById('close__btn');
+const nav_btn = document.getElementById('nav__toggle');
 
 nav_btn.addEventListener('click', ()=>{
     nav_bar.classList.add('show-nav');

@@ -1,20 +1,20 @@
-const ul = document.querySelector('.todo-list');
-const clearBtn= document.querySelector('#clear');
-const modal_container =document.querySelector('.modal-container'); 
-const close = document.querySelector('.close');
+const ul = document.querySelector('.todo__list');
+const clearBtn= document.getElementById('clear__btn');
+const edit__modal_container =document.querySelector('.edit__modal__container'); 
+const edit__close = document.querySelector('.close__edit');
 const csrf=document.querySelector('[name=_csrf]').value;
-const sortBtn = document.querySelector('#sort');
-const addTodoModal=document.getElementById("add-todo-modal");
-const addContainer=document.getElementById("add-modal-container");
-const add_close=document.getElementById('add-close');
+const sortBtn = document.querySelector('.sort__btn');
+const add_modal_btn=document.getElementById('add__modal__btn');
+const add__modal_container=document.getElementById('add__modal__container');
+const add__close=document.getElementById('close__add');
 // ---------------- Helper 함수 --------------------------------------
-window.closeModal= function (){ // modal 닫는 함수 
-    modal_container.classList.remove('show-modal');
+window.EditcloseModal= function (){ // modal 닫는 함수 
+    edit__modal_container.classList.remove('show-modal');
 }
 
 
 window.addCloseModal = function(){
-    addContainer.classList.remove('show-modal');
+    add__modal_container.classList.remove('show-modal');
 }
 
 // ul 삭제해주는 함수 
@@ -29,7 +29,7 @@ window.removeUl=function (){
 window.updateli=function(li,contents,id)
 {
     li.innerHTML= 
-    `<input type="checkbox" id="doneToggle" class="todo__state" onClick="DoneCheck(this)">
+    `<input type="checkbox" id="todo__state" class="todo__state" onClick="DoneCheck(this)">
         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 200 25" class="todo__icon">
             <use xlink:href="#todo__line" class="todo__line"></use>
             <use xlink:href="#todo__box" class="todo__box"></use>
@@ -37,7 +37,7 @@ window.updateli=function(li,contents,id)
             <use xlink:href="#todo__circle" class="todo__circle"></use>
         </svg>
         <input type="hidden" name="postId" id="postId" value="${id}"">
-        <span id='contents'>${contents}</span>
+        <span id="todo__contents">${contents}</span>
         <div class="dropdown">
             <button class="dropbtn">
                 <i class="fas fa-ellipsis-v"></i>
@@ -192,23 +192,24 @@ window.removeOne=async function(dom){
 // modal을 띄우는 함수
 window.popUpModal=function(dom)
 {
-    const dropdown = dom.parentNode;
-    const li =dropdown.parentNode.parentNode;
+    const dropdown = dom.parentNode.parentNode;
+    const li =dropdown.parentNode;
+    console.log(li);
     const id = li.querySelector('#postId').value;
-    const originContents = li.querySelector('#contents').innerText;
-    const modal_contents = modal_container.querySelector('.modal-content');
-    const ContentsInput= modal_contents.querySelector('#contents');
+    const originContents = li.querySelector('#todo__contents').innerText;
+    const modal_contents =edit__modal_container.querySelector('.edit__content');
+    const ContentsInput= modal_contents.querySelector('#submit__contents');
     ContentsInput.value=originContents; // 원래 contents 내용을 input value로 담아놓기
     localStorage.setItem('updateId', id); // 변경하는 항목의 id를 저장해놓기 
-    modal_container.classList.add('show-modal');
+    edit__modal_container.classList.add('show-modal');
 }
 
 
 // modal 내에서 edit submit을 누르면 실행되는 함수 
 window.updatePost=async function(dom){
     const id = localStorage.getItem('updateId'); // localstroage 에 저장해놓은 id 가져오기 
-    const modal_contents = modal_container.querySelector('.modal-content');
-    const contents = modal_contents.querySelector('#contents').value;
+    const modal_contents = edit__modal_container.querySelector('.edit__content');
+    const contents = modal_contents.querySelector('#submit__contents').value;
     let importance =modal_contents.querySelector('input[name="importance"]:checked');
     if(importance===null){
         importance = 'not';
@@ -236,7 +237,7 @@ window.updatePost=async function(dom){
         })
         const data = await result.json();
         updatedUI(contents,id);
-        closeModal(); // modal 닫기
+        EditcloseModal(); // modal 닫기
     }catch(err){
         console.log(err);
     }
@@ -257,19 +258,19 @@ window.sortByImportance=async function () // 중요도 순으로 정렬해주는
 }
 
 // --------- event listeners ----------------
-close.addEventListener('click',closeModal);
+edit__close .addEventListener('click',EditcloseModal);
 
-add_close.addEventListener('click',addCloseModal);
+add__close.addEventListener('click',addCloseModal);
 // modal 외부를 눌렀을 때도 modal 닫기
 window.addEventListener('click',(e)=>{
-    if(e.target===modal_container){
+    if(e.target===edit__modal_container){
         closeModal();
     }
-    else if(e.target === addContainer){
+    else if(e.target === add__modal_container){
         addCloseModal();
     }
 })
 
-addTodoModal.addEventListener("click", ()=>{
-    addContainer.classList.add("show-modal");
+add_modal_btn.addEventListener("click", ()=>{
+    add__modal_container.classList.add("show-modal");
 });

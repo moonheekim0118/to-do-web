@@ -1,6 +1,7 @@
 /* body content */
 @import url('https://fonts.googleapis.com/css2?family=Raleway+Dots&display=swap');
-.container{
+
+.index__container{
     background-image:url(images/background-img.webp) ;
     background-repeat: no-repeat;
     background-size: 100%  100%;
@@ -13,7 +14,8 @@
     text-align: center;
     font-family: 'Thasadith', sans-serif;
 }
-.container #logoTitle{
+
+.index__container .index__title{
     font-family: 'Raleway Dots', cursive;
     font-size: 140px;
     font-weight: bold;
@@ -25,21 +27,22 @@
     -webkit-text-fill-color: transparent;
     background-size: 200% 100%;
     background-position: 100%;
-    transition: background-position 300ms ease;
+    transition:300ms ease;
     text-decoration: none;
 }
 
-.container #logoTitle:hover{
+.index__container .index__title:hover{
     background-position: 0 100%;
 }
-.container #line{
+
+.index__container .line{
     margin : 50px auto;
     width:30%;
     text-align: center;
     border-top: 1px solid #fff;
 }
-.container #quotes{
-    
+
+.index__container .index__quotes{
     margin-top: 50px;
     font-size: 30px;
     animation: fadeIn ease 5s;
@@ -49,7 +52,7 @@
     -ms-animation:fadeIn ease 5s;
 }
 
-.container .signUp{
+.index__container .signUp__btn{
     text-decoration:none;
     color: black;
     background-color:#FFBF00;
@@ -62,10 +65,12 @@
     0% {opacity: 0;}
     100% {opacity: 1;}
 }
+
 @-moz-keyframes fadeIn {
     0% {opacity:0;}
     100% {opacity:1;}
 }
+
 @-webkit-keyframes fadeIn {
     0% {opacity:0;}
     100% {opacity:1;}
@@ -84,10 +89,10 @@
 
 
 @media (max-width:700px){
-    .container #quotes{
+    .index__container .index__quotes{
        font-size: 15px;
     }
-    .container #logoTitle {
+    .index__container .index__title {
         font-size: 80px;
     }
 }

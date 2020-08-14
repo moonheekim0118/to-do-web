@@ -5,8 +5,8 @@
 <body>
     <%- include('../includes/nav.ejs') %>
     <%- include('../includes/header.ejs') %>
-    <div class="post-container">
-        <ul class="post-list">
+    <div class="post__container">
+        <ul class="post__list">
            <!--받아온 날짜 출력-->
            <% if(postList.length > 0 ){ %>
             <p>what you've done so far! 🤟 </p>
@@ -15,7 +15,7 @@
                 <%}) %>
             <% } else {%>
                 <p >There is no todo list yet 👻 Let's make it now! </p>
-                <a href="/today-todo" class="addTodoBtn button" id="addTodoBtn">add new to do</a>
+                <a href="/today-todo" class="addTodo__btn button">add new to do</a>
             <% } %>
         </ul>
     </div>

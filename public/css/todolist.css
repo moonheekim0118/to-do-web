@@ -6,7 +6,7 @@
     --secondary-color:#FFBF00;
 }
 
-.todo-container{
+.todo__container{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -19,20 +19,20 @@
     text-align: center;
 }
 
-.add-todo .newTask{
+.add__todo .new__task{
     background-color: transparent;
     border:none;
     font-size:35px;
     border-bottom:1px solid black;
 }
 
-.todo-post{
+.todo__post{
   position: relative;
   width:40%;
   height: 100%;
 }
 
-.todo-list{
+.todo__list{
     margin: 50px auto;
     list-style-type: none;
     font-size: 30px;
@@ -66,7 +66,7 @@
     z-index: 1;
     opacity: 0;
 }
-.todo #contents{
+.todo #todo__contents{
     color: #135156;
     -webkit-transition: all 0.4s linear 0.4s;
     transition: all 0.4s linear 0.4s;
@@ -86,12 +86,14 @@
     stroke-linejoin: round;
     stroke-linecap: round;
   }
+
   .todo__line,
   .todo__box,
   .todo__check {
     -webkit-transition: stroke-dashoffset 0.8s cubic-bezier(0.9, 0, 0.5, 1);
     transition: stroke-dashoffset 0.8s cubic-bezier(0.9, 0, 0.5, 1);
   }
+
   .todo__circle {
     stroke: #27FDC7;
     stroke-dasharray: 1 6;
@@ -103,6 +105,7 @@
     -webkit-animation: none 0.8s linear;
             animation: none 0.8s linear;
   }
+
   @-webkit-keyframes explode {
     30% {
       stroke-width: 3;
@@ -117,6 +120,7 @@
               transform: scale(1.1) rotate(60deg);
     }
   }
+
   @keyframes explode {
     30% {
       stroke-width: 3;
@@ -131,12 +135,14 @@
               transform: scale(1.1) rotate(60deg);
     }
   }
+
   .todo__box {
     stroke-dasharray: 56.1053, 56.1053;
     stroke-dashoffset: 0;
     -webkit-transition-delay: 0.16s;
             transition-delay: 0.16s;
   }
+
   .todo__check {
     stroke: #27FDC7;
     stroke-dasharray: 9.8995, 9.8995;
@@ -144,46 +150,46 @@
     -webkit-transition-duration: 0.32s;
             transition-duration: 0.32s;
   }
+
   .todo__line {
     stroke-dasharray: 168, 1684;
     stroke-dashoffset: 168;
   }
+
   .todo__circle {
     -webkit-animation-delay: 0.56s;
             animation-delay: 0.56s;
     -webkit-animation-duration: 0.56s;
             animation-duration: 0.56s;
   }
+
   .todo__state:checked ~ #contents {
     -webkit-transition-delay: 0s;
             transition-delay: 0s;
     color: #5EBEC1;
     opacity: 0.6;
   }
+
   .todo__state:checked~ .todo__icon .todo__box {
     stroke-dashoffset: 56.1053;
     -webkit-transition-delay: 0s;
             transition-delay: 0s;
   }
+
   .todo__state:checked ~ .todo__icon .todo__line {
     stroke-dashoffset: -8;
   }
+
   .todo__state:checked ~ .todo__icon .todo__check {
     stroke-dashoffset: 0;
     -webkit-transition-delay: 0.48s;
             transition-delay: 0.48s;
   }
+
   .todo__state:checked ~ .todo__icon .todo__circle {
     -webkit-animation-name: explode;
             animation-name: explode;
   }
-
-.add-todo .newTask{
-    background-color: transparent;
-    border:none;
-    font-size:35px;
-    border-bottom:1px solid black;
-}
 
 
 .radio-box{
@@ -240,16 +246,16 @@
     display: block;
 }
 
-#clear.removed{
+#clear__btn.removed{
     display: none;
 }
 
-.todo-list.hidden{
+.todo__listt.hidden{
    display: none;
 }
 
 
-#sort{
+.sort__btn{
   position: absolute;
    text-decoration: none;
    color: #04B4AE;
@@ -261,19 +267,19 @@
    padding:5px;
 }
 
-#sort:hover{
+.sort__btn:hover{
     background-color: #04B4AE;
     color: #ddd;
 }
 
-#sort.removed{
+.sort__btn.removed{
     display: none;
 }
 
 /* 미디어 쿼리로 특정 width 넘겼을 때에는 , 위에 add to do 폼 없애고,
 아래에  + 버튼 추가하여 모달창 띄워서 폼 띄워줌*/
 
-.add-todo-modal{
+.add__modal__btn{
   margin-top:5px;
   font-size: 30px;
   border: 5px solid #fff;
@@ -283,7 +289,7 @@
   bottom:0px;
 }
 
-.add-modal-container{
+.add__modal__container{
   background-color: rgba(0,0,0,0.2);
   position: fixed;
   top:0;
@@ -294,11 +300,11 @@
   display:none;
 }
 
-.add-modal-container.show-modal{
+.add__modal__container.show-modal{
   display: block;
 }
 
-.add-modal{
+.add__modal{
   font-family: 'Thasadith', sans-serif;
   background-color: #fff;
   position: absolute;
@@ -314,14 +320,14 @@
 
 
 
-.add-modal-header{
+.add__header{
   background-color: var(--primary-color);
   font-size: 24px;
   padding: 10px;
   margin:0;
 }
 
-.add-close{
+.close__add{
   background-color: transparent;
   position: absolute;
   top:5px;
@@ -330,11 +336,11 @@
   padding:0 10px;
 }
 
-.add-modal-form input{
+.add__form input{
   padding : 8px;
 }
 
-.add-modal-form .newTask{
+.add__form .new__task{
   margin-top: 20px;
   width: 80%;
   font-size: 20px;
@@ -346,15 +352,15 @@
 
 @media (max-width:1000px){
 
-  .todo-post{
+  .todo__post{
     width: 90%;
   }
 
-  .add-todo{
+  .add__todo{
     display: none;
   }
 
-  .add-todo-modal{
+  .add__modal__btn{
     display: block;
   }
 }

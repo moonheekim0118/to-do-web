@@ -30,13 +30,13 @@ header.sticky{
     opacity: 0.7;
 }
 
-header #titleOfHeader{
+header .header__title{
     font-size: 60px;
     text-decoration: none;
     color: #fff;
 }
 
-header .toggle{
+header .nav__toggle{
     background-color: rgba(0,0,0,0.5);   
     border: none;
     position: absolute;
@@ -46,40 +46,41 @@ header .toggle{
     left:20px;
 }
 
-.SignIn{
+.sign__container{
     position: absolute;
     top: 20px;
     right: 35px;
     margin-top:10px;
 }
 
-.SignIn .login{
+.sign__container .login__link{
     font-size:24px; 
     text-decoration:none;
     color:#fff;
     margin-right:10px;
   }
   
-  .SignIn .signUp{
+
+.sign__container .signUp__link{
     color:var(--primary-color);
     text-decoration:none;
     background-color:#fff;
     padding: 8px 15px;
     border-radius: 5px;
     font-size:24px;
-  }
+}
 
-  .SignIn .logout{
+.sign__container .logout__link{
     font-size:24px; 
     text-decoration:none;
     color:#fff;
     margin-right:10px;
-  }
+}
 
 
-  .SignIn .login:hover{
+.sign__container .login__link:hover{
     border-bottom: 2px solid #fff;
-  }
+}
 
 
 @media (max-width:950px){
@@ -91,22 +92,24 @@ header .toggle{
        width:100%;
        z-index: 1;
    }
-   header  #titleOfHeader{
+
+   header .header__title{
        font-size: 25px;
    }
-   .SignIn{
+
+   .sign__container{
     top:5px;
     right:0;
     }
-    .SignIn .login{
+    .sign__container .login__link{
         font-size: 20px;
     }
 
-    .SignIn .signUp{
+    .sign__container .signUp__link{
         font-size: 20px;
     }
 
-    .SignIn .logout{
+    .sign__container .logout__link{
         font-size: 20px;
     }
 }

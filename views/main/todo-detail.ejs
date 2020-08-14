@@ -7,29 +7,29 @@
     <%- include('../includes/header.ejs') %>
     <input type="hidden" name="notdone" value="<%=NotDoneLen%>">
     <input type="hidden" name="done" value="<%=DoneLen%>">
-    <div class="post-container">
-        <div class="work-info">
-            <div class="chart-info">
+    <div class=" info__container">
+        <div class="work__info">
+            <div class="chart__info">
                 <p class="date"><%= date %></p>
                 <p class="total">Total amount of works <%= NotDoneLen+DoneLen %></p>
                 <p class="completed"> comlpeted <%= DoneLen %> </p>
                 <p class="uncompleted"> uncompleted <%= NotDoneLen %></p>
             </div>
-            <div class="chart-container">
+            <div class="chart__container">
                 <canvas id="completeChart"></canvas>
             </div>
         </div>
         
-        <div class="work-list">
+        <div class="work__list">
             <% if(DoneLen > 0) {%>
-            <ul class="done-list">
+            <ul class="completed__list">
                 <% Done.forEach(item=>{ %>
                     <li><%=item.contents%></li>
                 <% }) %>
             </ul>
             <% }%>
             <% if (NotDoneLen > 0) { %>
-            <ul class="not-done-list">
+            <ul class="uncompleted__list">
                 <% NotDone.forEach(item=>{ %>
                     <li><%=item.contents%></li>
                 <% }) %>

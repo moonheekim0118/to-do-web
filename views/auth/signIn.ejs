@@ -2,36 +2,31 @@
 <title><%= pageTitle%></title>
 </head>
 <body>
-    <div class="form-container">
-    <div id="goToIndex">
+    <div class="form__container">
+    <div class="index__link">
         <a href="/">TO DO</a>
     </div>
-    <p id="message">Let's make your day 👌🏻</p>
-    <form action="/signIn" method="POST" id="form-container">
-        <div class="form-control">
+    <p class="message">Let's make your day 👌🏻</p>
+    <form action="/signIn" method="POST" id="sign__form">
+        <div class="form__control">
             <label for="email">Email</label>
             <input type="email" name="email" id="email" placeholder="Enter Email" value=<%=oldInput.email %>>
             <small>Error Message</small>
         </div>
-        <!-- <div class="form-control" >
-            <label for="name">Name</label>
-            <input type="text" name="name" id="name" placeholder="Enter Name" >
-            <small>Error Message</small>
-        </div> -->
-        <div class="form-control">
+        <div class="form__control">
             <label for="password">Password</label>
             <input type="password" name="password" id="password" placeholder="Enter Password" value=<%=oldInput.password %>>
             <small>Error Message</small>
         </div>
         <% if(ErrorMessage.length >0) {%>
-            <div id='errorMessage'><%=ErrorMessage%></div>
+            <div class='error__message'><%=ErrorMessage%></div>
             <% } %>
-        <div class="form-control">
+        <div class="form__control">
             <input  type="hidden"  name="_csrf"  value="<%= csrfToken%>"  >
-            <input type="submit" value="Submit" class="submit">
+            <input type="submit" value="Submit" class="submit__btn">
         </div>
-      <div class="moveto">
-          <a href="/signup" id="goTo" class="goTo">or ... don't have an account yet👀 ?</a>
+      <div class="move__link">
+          <a href="/signup">or ... don't have an account yet👀 ?</a>
       </div>
     </form>                
     </div>

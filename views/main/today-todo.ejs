@@ -23,9 +23,9 @@
 <body>
     <%- include('../includes/nav.ejs') %>
     <%- include('../includes/header.ejs') %>
-    <div class="todo-container">
-        <form class="add-todo">
-            <input type="text" name="task" class="newTask" placeholder="Add new To do">
+    <div class="todo__container">
+        <form class="add__todo">
+            <input type="text" name="task" class="new__task" placeholder="Add new To do">
             <input type="hidden"  name="_csrf"  value="<%= csrfToken%>"  >
             <input type="button" onClick="addTodo(this)" value="add">
             <div class="radio-box">
@@ -37,13 +37,13 @@
                 <label for="not">Not that Important!</label>
             </div>
         </form>
-        <div class="todo-post">
-            <a href="#" class="<%=todoList.length === 0? 'removed' : ''%>" id="sort" onclick="sortByImportance();return false;">sort by importance</a>
-            <ul class="todo-list <%=todoList.length === 0? 'hidden' : ''%>">
+        <div class="todo__post">
+            <a href="#" class="sort__btn <%=todoList.length === 0? 'removed' : ''%>"  onclick="sortByImportance();return false;">sort by importance</a>
+            <ul class="todo__list <%=todoList.length === 0? 'hidden' : ''%>">
         <% if(todoList.length >0){ %>
             <% todoList.forEach(todo=>{ %>
                 <li class="<%= todo.isDone ? 'todo done' : 'todo' %>">
-                    <input type="checkbox" id="doneToggle" class="todo__state" onClick="DoneCheck(this)" <%= todo.isDone ? 'checked': '' %>>                        
+                    <input type="checkbox" id="todo__state" class="todo__state" onClick="DoneCheck(this)" <%= todo.isDone ? 'checked': '' %>>                        
                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 200 25" class="todo__icon">
                         <use xlink:href="#todo__line" class="todo__line"></use>
                         <use xlink:href="#todo__box" class="todo__box"></use>
@@ -51,7 +51,7 @@
                         <use xlink:href="#todo__circle" class="todo__circle"></use>
                     </svg>
                     <input type="hidden" name="postId" id="postId" value="<%=todo._id%>"">
-                    <span id="contents"><%= todo.contents %></span>
+                    <span id="todo__contents"><%= todo.contents %></span>
                     <div class="dropdown">
                         <button class="dropbtn">
                             <i class="fas fa-ellipsis-v"></i>
@@ -67,25 +67,25 @@
     </ul>
         </div>
       
-<button id="clear" class="<%= todoList.length===0 ? 'removed' : '' %>" onClick="clearAll(this)">Clear ALL</button>
+<button id="clear__btn" class="<%= todoList.length===0 ? 'removed' : '' %>" onClick="clearAll(this)">Clear ALL</button>
 
-<button class="add-todo-modal" id="add-todo-modal">+</button>
+<button class="add__modal__btn" id="add__modal__btn">+</button>
 </div>
-<!--modal-->
-<div class="modal-container" id="modal-container">
-    <div class="modal">
-        <button class="close" id="close">
+<!--Edit modal-->
+<div class="edit__modal__container" id="edit__modal__container">
+    <div class="edit__modal">
+        <button class="close__edit" id="close__edit">
             <i class="fa fa-times"></i>
         </button>
-        <div class="modal-header">
+        <div class="edit__header">
             update your to do 
         </div>
-        <div class="modal-content">
-            <form action="" class="modal-form">
-                <div class="form-control">
-                    <input type="text" id="contents">
+        <div class="edit__content">
+            <form action="" class="edit__form">
+                <div class="form__control">
+                    <input type="text" id="submit__contents" class="submit__contents">
                 </div>
-                <div class="form-control">
+                <div class="form__control">
                     <div class="radio-box">
                         <input type="radio" name="importance" id="strong"> 
                         <label for="strong">Very Important!</label>
@@ -95,27 +95,27 @@
                         <label for="not">Not that Important!</label>
                     </div>
                 </div>
-                <div class="form-control">
-                    <input type="button" onclick="updatePost(this)" value="Update" class="update">
+                <div class="form__control">
+                    <input type="button" onclick="updatePost(this)" value="Update" class="update__btn">
                 </div>
             </form>                
         </div>
     </div>
 </div>
-    <div class="add-modal-container" id="add-modal-container">
-        <div class="add-modal">
-            <button class="add-close" id="add-close">
+    <div class="add__modal__container" id="add__modal__container">
+        <div class="add__modal">
+            <button class="close__add" id="close__add">
                 <i class="fa fa-times"></i>
             </button>
-            <div class="add-modal-header">
+            <div class="add__header">
                 Add new To do 
             </div>
-            <div class="add-modal-content">
-                <form action="" class="add-modal-form">
-                    <div class="form-control">
-                        <input type="text" name="modal-task" class="newTask" placeholder="Add new To do">
+            <div class="add__content">
+                <form action="" class="add__form">
+                    <div class="form__control">
+                        <input type="text" name="modal-task" class="new__task" placeholder="Add new To do">
                     </div>
-                    <div class="form-control">
+                    <div class="form__control">
                         <div class="radio-box">
                             <input type="radio" name="importance" id="strong"> 
                             <label for="strong">Very Important!</label>
@@ -125,8 +125,8 @@
                             <label for="not">Not that Important!</label>
                         </div>
                     </div>
-                    <div class="form-control">
-                        <input type="button" onclick="addTodo(this)" value="AddModal" class="Add">
+                    <div class="form__control">
+                        <input type="button" onclick="addTodo(this)" value="modal-add" class="add__btn">
                     </div>
                 </form>                
             </div>

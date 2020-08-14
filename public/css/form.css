@@ -19,18 +19,18 @@ body{
     font-family: Arial, Helvetica, sans-serif;
 }
 
-.form-container{
+.form__container{
     background-color: #f4f4f4;
     border-radius: 5px;
     width: 400px;
     box-shadow:0 0 10px rgba(0, 0, 0, 0.3); 
 }
 
-.form-container #goToIndex{
+.form__container .index__link{
     margin: 20px;
 }
 
-#goToIndex a{
+.index__link a{
     text-decoration: none;
     color: var(--secondary-color);
     font-size: 30px;
@@ -38,12 +38,12 @@ body{
     
 }
 
-.form-container #message{
+.form__container .message{
     margin : 20px;
     text-align: center;
 }
 
-.form-control{
+.form__control{
     margin: 20px 20px;
 }
 
@@ -55,28 +55,28 @@ small {
     display: block;
 }
 
-.form-control input:focus{
+.form__control input:focus{
     outline: 0;
     border-color: var(--secondary-color);
 }
 
-.form-control.sucess input{
+.form__container.sucess input{
     border-color:aqua;
 }
 
-.form-control.error input{
+.form__container.error input{
     border-color: red;
 }
 
-.form-control small{
+.form__container small{
     color:red;
     visibility: hidden;
 }
-.form-control.error small{
+.form__container.error small{
     visibility: visible;
 }
 
-.form-control input{
+.form__container input{
     display: block;
     height: 30px;
     width: 100%;
@@ -85,22 +85,22 @@ small {
     margin : 10px 0;
 }
 
-.moveto{
+.move__link{
     text-align: center;
     margin : 20px 0;
 }
 
-.goTo{
+.move__link a{
     cursor: pointer;
     text-decoration: none;
     color: black;
 }
 
-.goTo:hover{
+.move__link a:hover{
     color: var(--primary-color)
 }
 
-.submit{
+.submit__btn{
     cursor: pointer;
     background-color: var(--primary-color);
     font-size: 20px;
@@ -110,7 +110,7 @@ input:focus{
     border: 1px solid var(--secondary-color);
 }
 
-#errorMessage{
+.error__message{
     color:red;
     text-align: center;
 }

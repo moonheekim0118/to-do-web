@@ -1,16 +1,16 @@
 <header>
-    <button id="toggle" class="toggle">
+    <button id="nav__toggle" class="nav__toggle">
         <i class="fa fa-bars fa-2x"></i>
     </button>
-    <a id="titleOfHeader" href="/">MAKE YOUR DAY PLANNABLE</a>
+    <a class="header__title" href="/">MAKE YOUR DAY PLANNABLE</a>
     <% if(!isAuthenticated) { %>
-        <div class="SignIn">
-            <a href="/signIn" class="login">Login</a>
-            <a href="/signup" class="signUp"> sign up</a>
+        <div class="sign__container">
+            <a href="/signIn" class="login__link">Login</a>
+            <a href="/signup" class="signUp__link"> sign up</a>
         </div>
     <% } else {%>
-        <div class="SignIn">
-            <a href="/logout" class="logout"> <i class="fas fa-sign-out-alt"></i> logout</a>
+        <div class="sign__container">
+            <a href="/logout" class="logout__link"> <i class="fas fa-sign-out-alt"></i>logout</a>
         </div>
     <% }  %>
 </header>

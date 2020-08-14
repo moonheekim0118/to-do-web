@@ -4,7 +4,7 @@
 }
 
 
-.post-container{
+.info__container{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -17,91 +17,42 @@
     text-align: center;
 }
 
-.post-container h1{
-    margin:0;
-    color: var(--secondary-color);
+
+.work__info{
+    display: flex;
+    justify-content: center; 
 }
 
-.NotDone-list.hidden{
- 
-     display: none;
-}
-
-.post-container .NotDone-logo.hidden{
-    display: none;
-}
-
-.Done-list.hidden{
-    display: none;
-}
-
-.post-container .Done-logo.hidden{
-    display: none;
-}
-
-.NotDone-list {
-    margin-bottom: 70px;
-    list-style-type: none;
-    background-color: #dfececc5;;
-    border: 1px solid #bbb8b8;
-    text-align: center;
-    width : 500px;
-    padding : 30px;
-    border-radius: 20px;
-}
-
-.Done-list{
-    list-style-type: none;
-    background-color: #dfececc5;;
-    border: 1px solid #bbb8b8;
-    text-align: center;
-    width : 500px;
-    padding : 30px;
-    border-radius: 20px;
-}
-.Done-list .post{
-    text-decoration: line-through;
-}
-.post{
-    margin-bottom: 10px;
-    font-size: 24px;
-}
-
-
-.chart-container{
-
+.chart__container{
     width: 500px;
     height: 300px;
 }
 
-.work-info{
-    display: flex;
-    justify-content: center; 
-}
-.chart-info .date{
+.chart__info .date{
     margin-bottom: 10px;
 }
-.chart-info .total{
+
+.chart__info .total{
     font-size: 40px;
     margin-bottom: 10px;
 }
 
-.chart-info .completed{
+.chart__info .completed{
     color: var(--primary-color);
     margin-bottom: 0px;
 }
 
-.chart-info .uncompleted{
+.chart__info .uncompleted{
     color: gray;
 }
 
 
-.work-list{
+.work__list{
     display: flex;
     margin-bottom: 40px;
 }
 
-.work-list .done-list{
+.work__list .completed__list{
     width: 400px;
     list-style-type: none;
     background-color: #fff;
@@ -115,7 +66,7 @@
     box-shadow: 9px 10px 0px 2px rgba(240,239,216,0.73);
 }
 
-.work-list .not-done-list{
+.work__list .uncompleted__list{
     width: 400px;
     list-style-type: none;
     background-color: #fff;
@@ -130,10 +81,10 @@
 
 
 @media (max-width:950px){
-    .work-info{
+    .work__info{
         flex-direction: column;
     }
-    .work-list{
+    .work__list{
         flex-direction: column;
     }
 }
