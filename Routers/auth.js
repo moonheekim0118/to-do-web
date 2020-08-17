@@ -2,10 +2,10 @@
 import {postLogin, getLogOut, postSignUp,  getLogin ,getSignUp} from '../Controller/auth.js';
 import express from 'express';
 import isAuth from '../middleware/is-Auth.js';
-import validator from 'express-validator';
+import { body } from 'express-validator';
 import User from '../Model/User.js';
 
-const {body}=validator;
+// const {body}=validator;
 const router = express.Router();
 
 
@@ -32,6 +32,7 @@ router.post('/signUp',[
             if(user){
                 return Promise.reject('E-mail already in use');
             }
+            return true;
         })
     }), 
     body('name').trim().isLength({min:3, max:10}).withMessage('name must be at least 3, less then 10'),
@@ -41,7 +42,7 @@ router.post('/signUp',[
         if(value !== req.body.password){
             throw new Error('passwords do not match ');
          }
-         else return true;
+         return true;
     })
 ],postSignUp);
 

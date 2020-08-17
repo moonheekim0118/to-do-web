@@ -3,6 +3,7 @@ import bodyParser from 'body-parser';
 import mogoose from 'mongoose';
 import DB_URI from './database.js';
 import { fileURLToPath} from 'url';
+import '@babel/polyfill'
 import path , { dirname }from 'path';
 import { error404handle, error500handle } from './Controller/error.js';
 import mainRouter from './Routers/main.js';
@@ -11,17 +12,17 @@ import csrf from 'csurf';
 import session from 'express-session';
 import { default as connectMongoDBSession} from 'connect-mongodb-session';
 import User from './Model/User.js';
-
 const csrfProtection = csrf();
 const MongoDBStore = connectMongoDBSession(session); // for mongo db - session connect
 const store = new MongoDBStore({ // set database for saving session 
     uri: DB_URI,
     collection: 'sessions'
 });
-const app = express();
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
 
+const app = express();
+// const __filename = fileURLToPath(import.meta.url);
+// const __dirname = dirname(__filename);
+const __dirname = path.dirname(new URL(import.meta.url).pathname);
 app.set('view engine', 'ejs'); // template engine set 
 app.set('views', 'views');
 app.use(bodyParser.urlencoded({extended:false})); // body parser set 
@@ -71,5 +72,5 @@ mogoose.connect(DB_URI)
 .catch(err=>{
     const error = new Error(err);
     error.httpStatusCode=500;
-    return next(error);
+    return error;
 })

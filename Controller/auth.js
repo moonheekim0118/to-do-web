@@ -1,7 +1,8 @@
 import bcrypt from 'bcrypt';
 import User from '../Model/User.js';
-import validator from 'express-validator';
-const { validationResult }= validator;
+import {validationResult}  from 'express-validator';
+// const  {validationResult} = validator;
+
 export const getLogin=(req,res,next)=>{ 
      // 이미 로그인 되었다면 ? 
      if(req.session.isLoggedIn){

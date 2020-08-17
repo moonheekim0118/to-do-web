@@ -1,4 +1,4 @@
-const path= require('path');
+const path = require('path');
 
 module.exports ={
     mode : "development",
@@ -43,6 +43,16 @@ module.exports ={
                   evaluate : '\\[\\[(.+?)\\]\\]'
                 }
             },
+            {
+              test: /\.m?js$/,
+              exclude: /(node_modules)/,
+              use: {
+                loader: 'babel-loader',
+                options: {
+                  presets: ['@babel/preset-env']
+                }
+              }
+            }
         ]
     }
 }

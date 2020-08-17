@@ -2,12 +2,12 @@
   "name": "d",
   "version": "1.0.0",
   "description": "",
-  "type": "module",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon --experimental-modules app.js",
-    "build": "npx webpack --config webpack.config.cjs"
+    "dev": "nodemon app.js --exec babel-node",
+    "build": "npx webpack --config webpack.config.js"
   },
   "repository": {
     "type": "git",
@@ -20,6 +20,9 @@
   },
   "homepage": "https://github.com/moonheekim0118/to-do-web#readme",
   "dependencies": {
+    "@babel/polyfill": "^7.10.4",
+    "babel-plugin-transform-dirname-filename": "^1.1.0",
+    "babel-preset-env": "^1.7.0",
     "bcrypt": "^5.0.0",
     "body-parser": "^1.19.0",
     "chart.js": "^2.9.3",
@@ -34,6 +37,14 @@
     "nodemon": "^2.0.4"
   },
   "devDependencies": {
+    "@babel/core": "^7.11.1",
+    "@babel/node": "^7.10.5",
+    "@babel/plugin-syntax-import-meta": "^7.10.4",
+    "@babel/preset-env": "^7.11.0",
+    "@babel/register": "^7.10.5",
+    "@types/node": "^14.6.0",
+    "babel-loader": "^8.1.0",
+    "babel-plugin-transform-import-meta": "^1.0.1",
     "css-loader": "^4.2.1",
     "file-loader": "^6.0.0",
     "html-loader": "^1.1.0",
