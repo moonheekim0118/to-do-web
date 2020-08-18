@@ -11,7 +11,9 @@ window.addError=function (input, message){
     const form_control= input.parentNode;
     const small= form_control.querySelector('small');
     small.innerText=message;
+    form_control.classList.remove('sucess');
     form_control.classList.add('error');
+    console.log(form_control);
 }
 
 window.addPass=function(input){
@@ -20,7 +22,7 @@ window.addPass=function(input){
     form_control.classList.add('sucess');
 }
 
-widnow.requiredCheck=function(input){
+window.requiredCheck=function(input){
     const inputLen= input.value.length;
         if(inputLen<=0){
             addError(input, `${input.id} is required`);
@@ -53,17 +55,17 @@ window.checkEmail=function(input){
     }
 }
 
-email.addEventListener('input', ()=>{
+email.addEventListener('change', ()=>{
     requiredCheck(email);
     checkEmail(email);
 })
 
-name_.addEventListener('input', ()=>{
+name_.addEventListener('change', ()=>{
     requiredCheck(name_);
     lengthCheck({input: name_, min:2, max:10});
 })
 
-password.addEventListener('input', ()=>{
+password.addEventListener('change', ()=>{
     requiredCheck(password);
     lengthCheck({input:password, min:6, max:12});
 })

@@ -60,23 +60,23 @@ small {
     border-color: var(--secondary-color);
 }
 
-.form__container.sucess input{
+.form__control.sucess input{
     border-color:aqua;
 }
 
-.form__container.error input{
+.form__control.error input{
     border-color: red;
 }
 
-.form__container small{
+.form__control small{
     color:red;
     visibility: hidden;
 }
-.form__container.error small{
+.form__control.error small{
     visibility: visible;
 }
 
-.form__container input{
+.form__control input{
     display: block;
     height: 30px;
     width: 100%;
