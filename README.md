@@ -58,6 +58,5 @@ Backend
 - babel을 사용하여 노드 Js에서 ES6 문법- import~from, export 구문을 사용해볼 수 있었다.
 
 
-
-![](https://i.ibb.co/0qxymsr/todolist.gif)
+![test](https://i.ibb.co/0qxymsr/todolist.gif)
 
