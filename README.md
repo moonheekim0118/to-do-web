@@ -56,3 +56,11 @@ Backend
 - Vanilla JS, CSS, HTML로 프론트를 구현함으로써, Vanilla JS DOM manipulation을 더 깊이 학습 할 수 있었다. 
 - webpack과 babel의 기초 사용법과 원리를 알 수 있었다.
 - babel을 사용하여 노드 Js에서 ES6 문법- import~from, export 구문을 사용해볼 수 있었다.
+
+
+![](https://ifh.cc/g/WybTqV.jpg)
+![](https://ifh.cc/g/jcTbQJ.png)
+![](https://ifh.cc/g/kilBJP.png)
+![](https://ifh.cc/g/HG58SW.png)
+![](https://ifh.cc/g/v21iD7.png)
+![](https://ifh.cc/g/bebJZo.png)
