@@ -2,7 +2,7 @@ const path = require('path');
 
 module.exports ={
     mode : "development",
-    entry :{ 
+    entry :{
         index:"./public/js/index.js",
         todayTodo:"./public/js/today.js",
         sign:"./public/js/sign.js",
@@ -44,7 +44,7 @@ module.exports ={
                 }
             },
             {
-              test: /\.m?js$/,
+              test: /\.js$/,
               exclude: /(node_modules)/,
               use: {
                 loader: 'babel-loader',

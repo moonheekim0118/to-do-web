@@ -2,8 +2,6 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import mogoose from 'mongoose';
 import DB_URI from './database.js';
-import { fileURLToPath} from 'url';
-import '@babel/polyfill'
 import path , { dirname }from 'path';
 import { error404handle, error500handle } from './Controller/error.js';
 import mainRouter from './Routers/main.js';
@@ -20,14 +18,12 @@ const store = new MongoDBStore({ // set database for saving session
 });
 
 const app = express();
-// const __filename = fileURLToPath(import.meta.url);
-// const __dirname = dirname(__filename);
 const __dirname = path.dirname(new URL(import.meta.url).pathname);
 app.set('view engine', 'ejs'); // template engine set 
 app.set('views', 'views');
 app.use(bodyParser.urlencoded({extended:false})); // body parser set 
 app.use(bodyParser.json());
-app.use(express.static(path.join(__dirname,'dist'))); // static file set 
+app.use(express.static('dist')); // static file set 
 app.use(session({secret:'my secret', resave:false, saveUninitialized:false, store:store})) // connectiong to db - session  
 app.use(csrfProtection); // csrf protection middleware
 
