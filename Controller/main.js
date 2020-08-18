@@ -122,7 +122,7 @@ export const updatePost = async(req,res,next)=>
             post.importance=importance;
         }
         await post.save();
-        return res.status(200).json({message:'succeed'});
+        return res.status(200).json({isDone:post.isDone});
     }catch(err)
     {
         const error = new Error(err);

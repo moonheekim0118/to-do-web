@@ -1,3 +1,5 @@
+const { check } = require("express-validator");
+
 const ul = document.querySelector('.todo__list');
 const clearBtn= document.getElementById('clear__btn');
 const edit__modal_container =document.querySelector('.edit__modal__container'); 
@@ -26,10 +28,11 @@ window.removeUl=function (){
 }
 
 // li 변경 함수 
-window.updateli=function(li,contents,id)
+window.updateli=function(li,contents,id,isDone)
 {
+    const checked = isDone ? 'checked': '';
     li.innerHTML= 
-    `<input type="checkbox" id="todo__state" class="todo__state" onClick="DoneCheck(this)">
+    `<input type="checkbox" id="todo__state" class="todo__state" onClick="DoneCheck(this)" ${checked}>
         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 200 25" class="todo__icon">
             <use xlink:href="#todo__line" class="todo__line"></use>
             <use xlink:href="#todo__box" class="todo__box"></use>
@@ -132,8 +135,8 @@ window.DoneCheck=async function(dom){
     else{ // uncheck 되었다면 
         li.classList.remove('done'); //done class 삭제 
     }
-    method='PUT';
-    sendingData ={done:checked, id:id };
+    const method='PUT';
+    const sendingData ={done:checked, id:id };
     const result = await fetch('/done-check',{  // 데이터베이스에 변경 사항 저장 
         method:method,
         body:JSON.stringify(sendingData),
@@ -236,7 +239,7 @@ window.updatePost=async function(dom){
             body:JSON.stringify(sendingData)
         })
         const data = await result.json();
-        updatedUI(contents,id);
+        updatedUI(contents,id,data.isDone);
         EditcloseModal(); // modal 닫기
     }catch(err){
         console.log(err);
@@ -252,7 +255,7 @@ window.sortByImportance=async function () // 중요도 순으로 정렬해주는
     post.forEach(p=>{ // 새로 받은 값으로 ul - li 채우기 
         const li = document.createElement('li');
         li.classList.add('todo');
-        updateli(li,p.contents, p._id); // li 새로 생성 
+        updateli(li,p.contents, p._id,p.isDone); // li 새로 생성 
         ul.appendChild(li);
     });
 }
