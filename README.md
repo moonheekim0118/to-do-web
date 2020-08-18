@@ -57,6 +57,5 @@ Backend
 - webpack과 babel의 기초 사용법과 원리를 알 수 있었다.
 - babel을 사용하여 노드 Js에서 ES6 문법- import~from, export 구문을 사용해볼 수 있었다.
 
-
-![test](https://i.ibb.co/0qxymsr/todolist.gif)
+<img src="todolist.gif?raw=true" width="450px">
 
